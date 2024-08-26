@@ -1,0 +1,74 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: lightgray;
+}
+
+#out{
+    border: 1px solid black;
+    width: 500px;
+    height: 420px;
+    background-color: white;
+    background-color: darkgray;
+}
+
+nav{
+    top: 0;
+    background-color: black;
+    overflow: auto;
+    text-align: center;
+}
+
+h1{
+    font-size: 1.5em;
+    color: white;
+}
+
+#idText{
+    margin-top: 10px;
+}
+
+#idText,
+#pwdText{
+    margin-left: 6px;
+    font-size: 1.5em;
+    color: white;
+}
+
+#adminId,
+#adminPwd{
+    width: 95%;
+    height: 40px;
+    margin-left: 6px;
+    font-size: 1.3em;
+    border-radius: 10px;
+}
+
+#loginBtnDiv{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginButton{
+    width: 90%;
+    height: 60px;
+    margin-bottom: 10px;
+    background-color: black;
+    border-radius: 10px;
+}
+
+p{
+    color: white;
+    font-size: 1.5em;
+}
+
+a{
+    margin-left: 10px;
+    text-decoration-line: none;
+}
