@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +15,7 @@
         </nav>
         <br>
         <form id="formDiv" action="/admin/login" method="post">
+
         <span id="idText">아이디</span><br>
         <input type="text" name="adminId" id="adminId"><br><br><br>
         <span id="pwdText">비밀번호</span><br>
@@ -25,7 +26,6 @@
             <button id="loginButton"><p>로그인</p></button>
         </div>
         </form>
-
     </div>
 </body>
 </html>
