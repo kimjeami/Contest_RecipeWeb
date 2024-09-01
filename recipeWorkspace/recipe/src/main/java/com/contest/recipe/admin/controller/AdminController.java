@@ -3,12 +3,18 @@ package com.contest.recipe.admin.controller;
 
 import com.contest.recipe.admin.service.AdminService;
 import com.contest.recipe.admin.vo.AdminVo;
+import com.contest.recipe.rank.vo.RankVo;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.support.HttpRequestHandlerServlet;
+
+import java.net.http.HttpRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("admin")
@@ -20,17 +26,21 @@ public class AdminController {
 
     @GetMapping("login")
     public String adminLogin(){
-        return "Admin/login";
+        return "admin/login";
     }
     @PostMapping("login")
-    public String adminLogin(AdminVo vo, HttpSession session){
+    public String adminLogin(AdminVo vo, HttpSession session, HttpServletRequest req){
         AdminVo loginAdminVo = service.adminLogin(vo);
-        if(loginAdminVo != null){
+        List<RankVo> voList =  service.adminRankData(vo);
+
+
+        req.getAttribute("voList");
+        if(loginAdminVo != null && voList != null){
             session.setAttribute("loginAdminVo",loginAdminVo);
             return "home";
         }
         else {
-            return "Admin/login";
+            return "admin/login";
         }
     }
 
