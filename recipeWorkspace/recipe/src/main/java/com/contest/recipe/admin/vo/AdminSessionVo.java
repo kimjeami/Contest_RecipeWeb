@@ -2,8 +2,6 @@ package com.contest.recipe.admin.vo;
 
 import com.contest.recipe.rank.vo.RankVo;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
@@ -12,8 +10,7 @@ import java.util.List;
  *
  * <li>Setter 는 안 넣었음, 값은 생성자로 넣어라 </li>
  * */
-@RequiredArgsConstructor
-@Getter
+@Data
 public class AdminSessionVo {
     private AdminVo adminVo;
     private List<RankVo> grantedRanks;
