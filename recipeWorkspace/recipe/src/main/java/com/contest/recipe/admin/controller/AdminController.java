@@ -2,6 +2,7 @@ package com.contest.recipe.admin.controller;
 
 
 import com.contest.recipe.admin.service.AdminService;
+import com.contest.recipe.admin.vo.AdminSessionVo;
 import com.contest.recipe.admin.vo.AdminVo;
 import com.contest.recipe.rank.vo.RankVo;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,6 +33,7 @@ public class AdminController {
     public String adminLogin(AdminVo vo, HttpSession session, HttpServletRequest req){
         AdminVo loginAdminVo = service.adminLogin(vo);
         List<RankVo> voList =  service.adminRankData(vo);
+        AdminSessionVo SessionVo = new AdminSessionVo(loginAdminVo,voList);
 
 
         req.getAttribute("voList");
