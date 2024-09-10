@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.contest.recipe.board.repository.BoardRepository">
+    <insert id="Recipesave">
+        insert into recipe (recipte_no, write_no, title, thumbnail, introduce, recipe_cate_no, serving, time_taken, step, tip, enroll_date, state,seq, things_name, ea, things_url,RECIPTE_ORDER, explanation, recipe_seq_img)
+        VALUES (SEQ_REPORT_NO.NEXTVAL, 1000, #{title}, #{thumbnail}, #{introduce}, #{recipe_cate_no}, #{serving}, #{time_taken}, #{step}, #{tip},  SYSDATE, #{state},1, #{things_name}, #{ea}, #{things_url},1, #{explanation}, #{recipe_seq_img})
+    </insert>
+
+
+    <resultMap type="com.contest.recipe.board.domain.Recipe" id="recipe">
+        <id property="recipte_no" column="recipte_no"/>
+        <result property="write_no" column="write_no"/>
+        <result property="recipe_cate_no" column="recipe_cate_no"/>
+        <result property="title" column="title"/>
+        <result property="introduce" column="introduce"/>
+        <result property="tip" column="tip"/>
+        <result property="enroll_date" column="enroll_date"/>
+        <result property="modify_date" column="modify_date"/>
+        <result property="del_yn" column="del_yn"/>
+        <result property="hit" column="hit"/>
+        <result property="state" column="state"/>
+        <result property="step" column="step"/>
+        <result property="time_taken" column="time_taken"/>
+        <result property="serving" column="serving"/>
+        <result property="ea" column="ea"/>
+        <result property="things_name" column="things_name"/>
+        <result property="things_url" column="things_url"/>
+        <result property="recipte_order" column="recipte_order"/>
+        <result property="explanation" column="explantaion"/>
+        <result property="recipe_seq_img" column="recipe_seq_img"/>
+    </resultMap>
+
+    <select id="recipeList" resultMap="recipe">
+        SELECT * FROM recipe
+    </select>
+
+</mapper>
