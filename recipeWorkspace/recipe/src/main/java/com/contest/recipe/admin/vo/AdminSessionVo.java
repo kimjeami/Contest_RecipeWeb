@@ -14,4 +14,9 @@ import java.util.List;
 public class AdminSessionVo {
     private AdminVo adminVo;
     private List<RankVo> grantedRanks;
+
+    public AdminSessionVo(AdminVo adminVo, List<RankVo> grantedRanks){
+        this.adminVo = adminVo;
+        this.grantedRanks = grantedRanks;
+    }
 }
