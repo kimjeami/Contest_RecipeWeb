@@ -5,6 +5,7 @@ import com.contest.recipe.admin.vo.AdminVo;
 import com.contest.recipe.rank.vo.RankVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface AdminMapper {
     AdminVo adminLogin(AdminVo vo);
 
     @Select("""
-            SELECT ADMIN_NO, RANK_NO
+            SELECT ADMIN_NO as adminNo, RANK_NO as rankNo
             FROM RANK_PERMISSION
             WHERE ADMIN_NO = #{adminNo}
             """)

@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>헬로월드</title>
 <link rel="stylesheet" href="/css/admin/adminLogin.css">
+<script defer src="/js/admin/adminLogin.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="out">
@@ -14,8 +16,6 @@
             <h1>Recipe Admin</h1>
         </nav>
         <br>
-        <form id="formDiv" action="/admin/login" method="post">
-
         <span id="idText">아이디</span><br>
         <input type="text" name="adminId" id="adminId"><br><br><br>
         <span id="pwdText">비밀번호</span><br>
@@ -23,9 +23,8 @@
 
         <a href="#">관리자 문의</a>
         <div id="loginBtnDiv">
-            <button id="loginButton"><p>로그인</p></button>
+            <button id="loginButton" onclick="smt();"><p>로그인</p></button>
         </div>
-        </form>
     </div>
 </body>
 </html>
