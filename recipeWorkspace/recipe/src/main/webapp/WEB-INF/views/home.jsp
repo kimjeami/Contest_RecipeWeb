@@ -18,7 +18,9 @@
     <a>관리자 번호 : ${sessionScope.adminVo.adminNo}</a>
     <button id="grantBtn" type="button" onclick="grantBtn();">권한 확인하기</button><br><br><hr>
     <c:forEach var="vo" items="${sessionScope.rankVo}">
-        <a>권한 : ${vo.rankNo}</a>
+        <a>${vo.rankName} : ${vo.rankNo}</a>
     </c:forEach>
+    <br><br>
+        로그인한 회원 : ${sessionScope.adminVo.adminId}
 </body>
 </html>
