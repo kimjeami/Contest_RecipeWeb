@@ -13,5 +13,7 @@ public interface BoardRepository {
 
     public List<Recipe> recipeList();
 
+    public Recipe recipeDetail(int recipte_no);
+
 
 }

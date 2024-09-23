@@ -12,4 +12,7 @@ public interface BoardService {
 
     public void recipeList(Model model);
 
+    public void recipeDetail(int recipte_no, Model model);
+
+
 }

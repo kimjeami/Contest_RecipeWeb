@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
@@ -54,6 +55,16 @@ public class BoardController {
         return "Board/list";
 
     }
+
+
+    @GetMapping("detail")
+    public String detail(@RequestParam("recipte_no")int recipte_no, Model model) {
+
+        //상세 페이지
+        boardService.recipeDetail(recipte_no,model);
+        return "Board/detail";
+    }
+
 
 
 }

@@ -77,7 +77,7 @@ public class BoardServiceImpl implements BoardService{
 
         StringBuilder combinedIngredients = new StringBuilder();
         for (int i = 0; i < thingsNames.length; i++) {
-            combinedIngredients.append(thingsNames[i]).append(" - ").append(eas[i]).append(" - ").append(thingsUrls[i]).append(" | ");
+            combinedIngredients.append(thingsNames[i]).append(" - ").append(eas[i]).append(" - ").append(thingsUrls[i]).append(",");
         }
         recipe.setThings_name(combinedIngredients.toString());
 
@@ -86,7 +86,7 @@ public class BoardServiceImpl implements BoardService{
 
         StringBuilder combinedSteps = new StringBuilder();
         for (int i = 0; i < explanations.length; i++) {
-            combinedSteps.append(explanations[i]).append(" | ");
+            combinedSteps.append(explanations[i]).append(",");
         }
         recipe.setExplanation(combinedSteps.toString());
 
@@ -94,19 +94,22 @@ public class BoardServiceImpl implements BoardService{
         boardRepository.Recipesave(recipe);
     }
 
-
-
-
-
-
-
-
-
-
-
     // 레시피 목록 가져오기
     @Override
     public void recipeList(Model model) {
         model.addAttribute("recipe",boardRepository.recipeList());
     }
+
+    // 레시피 상세정보
+
+
+    @Override
+    public void recipeDetail(int recipte_no, Model model) {
+        Recipe recipe = boardRepository.recipeDetail(recipte_no);
+        model.addAttribute("recipe",recipe);
+
+    }
 }
+
+
+

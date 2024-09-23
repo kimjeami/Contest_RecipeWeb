@@ -28,7 +28,7 @@
         <result property="things_name" column="things_name"/>
         <result property="things_url" column="things_url"/>
         <result property="recipte_order" column="recipte_order"/>
-        <result property="explanation" column="explantaion"/>
+        <result property="explanation" column="explanation"/>
         <result property="recipe_seq_img" column="recipe_seq_img"/>
     </resultMap>
 
@@ -36,4 +36,9 @@
         SELECT * FROM recipe
     </select>
 
+    <select id="recipeDetail" resultMap="recipe">
+        SELECT * FROM recipe
+        where recipte_no=#{recipte_no}
+    </select>
+    
 </mapper>
