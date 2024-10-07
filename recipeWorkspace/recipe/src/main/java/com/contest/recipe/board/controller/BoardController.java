@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 // 레시피 페이지
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/recipe")
 public class BoardController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class BoardController {
 
             try{
                 boardService.write(mul, response, request);
-                return "redirect:/board/list";
+                return "redirect:/recipe/list";
             }catch (Exception e){
                 e.printStackTrace();
             }

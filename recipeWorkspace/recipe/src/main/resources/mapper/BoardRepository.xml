@@ -5,7 +5,7 @@
 <mapper namespace="com.contest.recipe.board.repository.BoardRepository">
     <insert id="Recipesave">
         insert into recipe (recipte_no, write_no, title, thumbnail, introduce, recipe_cate_no, serving, time_taken, step, tip, enroll_date, state,seq, things_name, ea, things_url,RECIPTE_ORDER, explanation, recipe_seq_img)
-        VALUES (SEQ_REPORT_NO.NEXTVAL, 1000, #{title}, #{thumbnail}, #{introduce}, #{recipe_cate_no}, #{serving}, #{time_taken}, #{step}, #{tip},  SYSDATE, #{state},1, #{things_name}, #{ea}, #{things_url},1, #{explanation}, #{recipe_seq_img})
+        VALUES (SEQ_REPORT_NO.NEXTVAL, #{write_no}, #{title}, #{thumbnail}, #{introduce}, #{recipe_cate_no}, #{serving}, #{time_taken}, #{step}, #{tip},  SYSDATE, #{state},1, #{things_name}, #{ea}, #{things_url},1, #{explanation}, #{recipe_seq_img})
     </insert>
 
 

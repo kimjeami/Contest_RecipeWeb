@@ -13,7 +13,7 @@
     <div class="container">
         <jsp:include page="/WEB-INF/views/layout/nav.jsp" />
         <main class="main">
-            응 메인이야
+           ${loginMemberVo}
         </main>
         <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
     </div>

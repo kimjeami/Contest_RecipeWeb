@@ -62,6 +62,7 @@ public class BoardServiceImpl implements BoardService{
         }
 
         // 레시피 기본 정보 설정
+        recipe.setWrite_no(Integer.parseInt(mul.getParameter("write_no")));
         recipe.setTitle(mul.getParameter("title"));
         recipe.setIntroduce(mul.getParameter("introduce"));
         recipe.setRecipe_cate_no(Integer.parseInt(mul.getParameter("recipe_cate_no")));

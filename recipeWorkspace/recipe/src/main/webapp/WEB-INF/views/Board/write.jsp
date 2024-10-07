@@ -11,7 +11,8 @@
 <body>
    <div id="write_main">
     <h2 id="recipe_submit">레시피 등록</h2>
-    <form th:action="@{/board/write}" method="post" enctype="multipart/form-data" id="boardWriteForm", name="boardWriteForm">
+    <form th:action="@{/recipe/write}" method="post" enctype="multipart/form-data" id="boardWriteForm", name="boardWriteForm">
+        <input type="hidden" id="write_no" name="write_no" value="${loginMemberVo.no}">
         레시피 제목 <input type="text" id="title" name="title">
         <br/><br/>
       <div id="thumbnal_css">

@@ -27,7 +27,7 @@
                     </td>
                     <td>
                         <dl>
-                             <dt><a href="${contextPath}/board/detail?recipte_no=${recipe.recipte_no}">${recipe.title }</dt>
+                             <dt><a href="${contextPath}/recipe/detail?recipte_no=${recipe.recipte_no}">${recipe.title }</dt>
                         </dl>
 
                     </td>

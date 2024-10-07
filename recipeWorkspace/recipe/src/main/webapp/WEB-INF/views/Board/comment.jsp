@@ -15,7 +15,7 @@
 
                  <div class="mb-3" name="myform" id="myform" >
                     <input type="hidden" id="recipte_no" name="recipte_no" value="${recipe.recipte_no}">
-                    <input type="hidden" id="member_name" name="member_name" value="이용진">
+                    <input type="hidden" id="member_name" name="member_name" value="${loginMemberVo.nick}">
                     <fieldset>
                     		<span class="text-bold">별점을 선택해주세요</span>
                     		<input type="radio" name="reviewStar" value="5" id="rate1" checked><label
