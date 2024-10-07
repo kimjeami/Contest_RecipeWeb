@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("recipe")
-public class HomeController {
+public class RecipeController {
     //레시피 홈화면
     @GetMapping
     public String m01(){
