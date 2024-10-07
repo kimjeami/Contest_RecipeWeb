@@ -21,12 +21,13 @@ public class CommentServiceImpl implements CommentService{
 
 
     @Override
-    public void write(int recipte_no , String answer) {
+    public void write(int recipte_no , String answer, String member_name,int scope) {
         Recipte_comment recipte_comment = new Recipte_comment();
 
         recipte_comment.setRecipte_no(recipte_no);
         recipte_comment.setAnswer(answer);
-
+        recipte_comment.setMember_name(member_name);
+        recipte_comment.setScope(scope);
         commentRepository.Commentsave(recipte_comment);
 
 

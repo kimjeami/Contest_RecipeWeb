@@ -19,4 +19,5 @@ public class Recipte_comment {
     private LocalDateTime write_date ; // 작성일
     private char del_yn; // 삭제 여부
     private int scope; // 별점
+    private String member_name; // 작성자 명
 }

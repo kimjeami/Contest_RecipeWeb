@@ -10,6 +10,9 @@ $(document).ready(function() {
     $('#btn_comment').click(function() {
 
         const answer = $('#input_comment').val();
+        const member_name = $('#member_name').val();
+        const scope = $('input[name="reviewStar"]:checked').val();
+
 
         if (answer.trim() === '') {
             alert('댓글 내용을 입력하세요.');
@@ -21,12 +24,14 @@ $(document).ready(function() {
             url: '/comment/write',
             data: {
                 recipte_no: recipte_no,
-                answer: answer
+                answer: answer,
+                member_name: member_name,
+                scope: scope
             },
             success: function(response) {
                 // 댓글 등록 후 UI 업데이트
                 $('#input_comment').val(''); // 입력 필드 초기화
-                loadComments(recipte_no); // 댓글 목록 다시 불러오기
+                loadComment(recipte_no); // 댓글 목록 다시 불러오기
             },
             error: function(xhr, status, error) {
                 alert('댓글 등록에 실패했습니다: ' + error);
@@ -66,9 +71,10 @@ function buildComment(comments) {
 
         const row = `
           <tr>
-              <td>${recipte_comment.member_reply_no}</td>
+              <td>${recipte_comment.member_name}</td>
               <td>${recipte_comment.answer}</td>
               <td>${formattedDate}</td>
+              <td>${recipte_comment.scope}</td>
           </tr>
         `;
         commentList.append(row); // 댓글 목록에 새로운 행 추가
