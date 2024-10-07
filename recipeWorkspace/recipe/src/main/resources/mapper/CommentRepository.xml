@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.contest.recipe.board.repository.CommentRepository">
+    <insert id="Commentsave">
+        insert into recipte_comment (no, recipte_no,member_reply_no,answer,write_date)
+        VALUES (SEQ_RECIPTE_COMMENT_NO.NEXTVAL,#{recipte_no},1000,#{answer},sysdate)
+    </insert>
+
+    <resultMap type="com.contest.recipe.board.domain.Recipte_comment" id="recipe_comment">
+        <id property="no" column="no"/>
+        <id property="recipte_no" column="recipte_no"/>
+        <id property="member_reply_no" column="member_reply_no"/>
+        <id property="answer" column="answer"/>
+        <id property="write_date" column="write_date"/>
+        <id property="del_yn" column="del_yn"/>
+        <id property="scope" column="scope"/>
+    </resultMap>
+
+    <select id="Commentlist" resultMap="recipe_comment">
+        SELECT * FROM recipte_comment  WHERE recipte_no = #{recipte_no}
+    </select>
+
+
+</mapper>
