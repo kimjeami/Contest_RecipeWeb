@@ -13,14 +13,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdminService {
 
-    private final AdminDao dao;
-
+    private final AdminDao adminDao;
 
     public AdminVo adminLogin(AdminVo vo) {
-        return dao.adminLogin(vo);
+        return adminDao.adminLogin(vo);
     }
 
     public List<RankVo> adminRankData(AdminVo vo) {
-        return dao.adminRankData(vo);
+        return adminDao.adminRankData(vo);
     }
 }

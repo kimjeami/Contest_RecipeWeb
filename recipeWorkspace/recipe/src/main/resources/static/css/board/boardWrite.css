@@ -1,3 +1,49 @@
+#boardWriteForm{
+    font-size:20px;
+
+    margin:80px;
+
+
+
+}
+#modifyForm{
+    font-size:20px;
+
+    margin:60px;
+
+
+
+}
+
+
+#title{
+
+    width:40%;
+    height:20px;
+}
+
+
+#thumbnal_css{
+
+    float:right;
+    text-align: center;
+
+}
+
+
+
+
+#introduce{
+    width:700px;
+}
+
+#recipe_introduce{
+    top:0;
+}
+
+
+
+
 
 #recipe_submit {
    text-align: center;

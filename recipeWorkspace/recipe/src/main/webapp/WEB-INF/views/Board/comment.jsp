@@ -11,8 +11,6 @@
 <body>
   <div>
             <div class="mb-3 mt-3">
-                <label>댓글: <span id="cmt_cnt"></span> 개</label>
-
                  <div class="mb-3" name="myform" id="myform" >
                     <input type="hidden" id="recipte_no" name="recipte_no" value="${recipe.recipte_no}">
                     <input type="hidden" id="member_name" name="member_name" value="${loginMemberVo.nick}">

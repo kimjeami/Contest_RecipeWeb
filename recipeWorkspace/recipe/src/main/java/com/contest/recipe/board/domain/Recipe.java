@@ -32,6 +32,7 @@ public class Recipe {
     private String things_name; // 재료 이름
     private String things_url; // 재료 링크
     private int recipte_order; // 레시피 순서
-    private String  explanation;
-    private String recipe_seq_img;
+    private String  explanation; // 레시피 내용
+    private String recipe_seq_img; // 레시피 순서 이미지
+    private String write_name; // 작성자 이름
 }

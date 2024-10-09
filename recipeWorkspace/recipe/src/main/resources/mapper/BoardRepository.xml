@@ -4,8 +4,8 @@
 
 <mapper namespace="com.contest.recipe.board.repository.BoardRepository">
     <insert id="Recipesave">
-        insert into recipe (recipte_no, write_no, title, thumbnail, introduce, recipe_cate_no, serving, time_taken, step, tip, enroll_date, state,seq, things_name, ea, things_url,RECIPTE_ORDER, explanation, recipe_seq_img)
-        VALUES (SEQ_REPORT_NO.NEXTVAL, #{write_no}, #{title}, #{thumbnail}, #{introduce}, #{recipe_cate_no}, #{serving}, #{time_taken}, #{step}, #{tip},  SYSDATE, #{state},1, #{things_name}, #{ea}, #{things_url},1, #{explanation}, #{recipe_seq_img})
+        insert into recipe (recipte_no, write_no, title, thumbnail, introduce, recipe_cate_no, serving, time_taken, step, tip, enroll_date, state,seq, things_name, ea, things_url,RECIPTE_ORDER, explanation, recipe_seq_img,write_name)
+        VALUES (SEQ_REPORT_NO.NEXTVAL, #{write_no}, #{title}, #{thumbnail}, #{introduce}, #{recipe_cate_no}, #{serving}, #{time_taken}, #{step}, #{tip},  SYSDATE, #{state},1, #{things_name}, #{ea}, #{things_url},1, #{explanation}, #{recipe_seq_img},#{write_name})
     </insert>
 
 
@@ -30,6 +30,7 @@
         <result property="recipte_order" column="recipte_order"/>
         <result property="explanation" column="explanation"/>
         <result property="recipe_seq_img" column="recipe_seq_img"/>
+        <result property="write_name" column="write_name"/>
     </resultMap>
 
     <select id="recipeList" resultMap="recipe">
@@ -40,5 +41,11 @@
         SELECT * FROM recipe
         where recipte_no=#{recipte_no}
     </select>
-    
+
+    <update id="modify">
+        UPDATE recipe
+        set title=#{title}, thumbnail=#{thumbnail}, introduce=#{introduce},recipe_cate_no =#{recipe_cate_no},serving=#{serving},time_taken=#{time_taken},step=#{step},tip=#{tip},modify_date=sysdate,things_name=#{things_name},ea=#{ea},things_url=#{things_url},explanation=#{explanation},recipe_seq_img=#{recipe_seq_img}
+        where recipte_no=#{recipte_no}
+    </update>
+
 </mapper>

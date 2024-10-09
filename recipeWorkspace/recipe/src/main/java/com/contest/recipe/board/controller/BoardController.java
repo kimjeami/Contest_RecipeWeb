@@ -56,7 +56,7 @@ public class BoardController {
 
     }
 
-
+    // 상세 페이지
     @GetMapping("detail")
     public String detail(@RequestParam("recipte_no")int recipte_no, Model model) {
 
@@ -65,7 +65,28 @@ public class BoardController {
         return "Board/detail";
     }
 
+    // 수정 페이지
+    // 수정할 글 가져오기
+    @GetMapping("modifyForm")
+    public String modifyForm(@RequestParam("recipte_no")int recipte_no, Model model){
+
+        boardService.recipeModifyForm(recipte_no,model);
 
 
+        return "Board/modifyForm" ;
+    }
+
+    // 수정 하기
+    @PostMapping("modify")
+    public  String modify(MultipartHttpServletRequest mul,
+                          HttpServletRequest request){
+        boardService.recipeMoidfy(mul,request);
+
+        int recipte_no = Integer.parseInt(mul.getParameter("recipte_no"));
+
+
+        return "redirect:/recipe/detail?recipte_no="+recipte_no;
+
+    }
 
 }

@@ -5,6 +5,8 @@ import com.contest.recipe.member.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -12,5 +14,21 @@ public class MemberService {
 
     public MemberVo login(MemberVo vo) {
         return dao.login(vo);
+    }
+
+    public int join(MemberVo memberVo) {
+        return dao.join(memberVo);
+    }
+
+    public int edit(MemberVo memberVo) {
+        return dao.edit(memberVo);
+    }
+
+    public int delete(String no) {
+        return dao.delete(no);
+    }
+
+    public List<MemberVo> list() {
+        return dao.list();
     }
 }
