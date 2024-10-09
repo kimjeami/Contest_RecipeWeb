@@ -15,5 +15,7 @@ public interface BoardRepository {
 
     public Recipe recipeDetail(int recipte_no);
 
+    public  void modify(Recipe recipe);
+
 
 }

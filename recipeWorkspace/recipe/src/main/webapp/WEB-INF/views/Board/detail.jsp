@@ -13,9 +13,13 @@
   <script type="text/javascript">
       const recipeData = [[${recipe}]];
   </script>
+   <jsp:include page="/WEB-INF/views/layout/util.jsp" />
 
 </head>
 <body>
+          <div class="container">
+                <jsp:include page="/WEB-INF/views/layout/nav.jsp" />
+                <main class="main">
 
                 <h2>썸네일</h2>
                 <br/><br/>
@@ -82,7 +86,19 @@
                 <br/><br/>
                 <label>레시피 문의하기</label>
                 <label>리뷰</label>
+                <br/><br/>
+                <c:if test="${recipe.write_no == loginMemberVo.no}">
+                    <input type="button" value="수정하기" onclick="location.href='${contextPath}/recipe/modifyForm?recipte_no=${recipe.recipte_no}'"> &nbsp;
+                    <input type="button" value="삭제하기" onclick="location.href='${contextPath}/recipe/delete?writeNo=${data.writeNo }&imageFileName=${data.imageFileName }'"> &nbsp;
+                </c:if>
+
+
                 <c:import url="comment.jsp"/>
+
+                </main>
+                <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+            </div>
+
 
 
 

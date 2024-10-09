@@ -101,7 +101,7 @@ public class BoardServiceImpl implements BoardService{
         model.addAttribute("recipe",boardRepository.recipeList());
     }
 
-    // 레시피 상세정보
+    // 레시피 상세정보 가져오기
 
 
     @Override
@@ -109,6 +109,75 @@ public class BoardServiceImpl implements BoardService{
         Recipe recipe = boardRepository.recipeDetail(recipte_no);
         model.addAttribute("recipe",recipe);
 
+    }
+
+    // 레시피 수정 페이지
+
+    // 수정할 정보 가져오기
+    @Override
+    public void recipeModifyForm(int recipte_no, Model model) {
+        Recipe recipe = boardRepository.recipeDetail(recipte_no);
+        model.addAttribute("recipe",recipe);
+    }
+
+    // 레시피 수정
+    @Override
+    public void recipeMoidfy(MultipartHttpServletRequest mul, HttpServletRequest request) {
+        Recipe recipe = new Recipe();
+
+        // 이미지 파일 처리
+        MultipartFile file1 = mul.getFile("thumbnal");
+        List<MultipartFile> recipeSeqImgs = mul.getFiles("recipe_seq_img[]");
+        if (file1 != null && !file1.isEmpty()) {
+            recipe.setThumbnail(bfs.saveFile1(file1));
+        } else {
+            recipe.setThumbnail("nan"); // 기본값 설정
+        }
+
+        // 여러 이미지 저장 처리
+        if (recipeSeqImgs != null && !recipeSeqImgs.isEmpty()) {
+            StringBuilder imagePaths = new StringBuilder();
+            for (MultipartFile imgFile : recipeSeqImgs) {
+                String imgPath = bfs.saveFile2(imgFile);
+                imagePaths.append(imgPath).append(","); // 이미지 경로를 구분자로 결합
+            }
+            recipe.setRecipe_seq_img(imagePaths.toString()); // 경로를 문자열로 저장
+        } else {
+            recipe.setRecipe_seq_img("nan"); // 기본값 설정
+        }
+
+        // 레시피 변경된 정보 저장
+        recipe.setRecipte_no(Integer.parseInt(mul.getParameter("recipte_no")));
+        recipe.setTitle(mul.getParameter("title"));
+        recipe.setIntroduce(mul.getParameter("introduce"));
+        recipe.setRecipe_cate_no(Integer.parseInt(mul.getParameter("recipe_cate_no")));
+        recipe.setServing(mul.getParameter("serving"));
+        recipe.setTime_taken(mul.getParameter("time_taken"));
+        recipe.setStep(mul.getParameter("step"));
+        recipe.setTip(mul.getParameter("tip"));
+
+        // 재료 정보 처리
+        String[] thingsNames = mul.getParameterValues("things_name[]");
+        String[] eas = mul.getParameterValues("ea[]");
+        String[] thingsUrls = mul.getParameterValues("things_url[]");
+
+        StringBuilder combinedIngredients = new StringBuilder();
+        for (int i = 0; i < thingsNames.length; i++) {
+            combinedIngredients.append(thingsNames[i]).append(" - ").append(eas[i]).append(" - ").append(thingsUrls[i]).append(",");
+        }
+        recipe.setThings_name(combinedIngredients.toString());
+
+        // 요리 순서 처리
+        String[] explanations = mul.getParameterValues("explanation[]");
+
+        StringBuilder combinedSteps = new StringBuilder();
+        for (int i = 0; i < explanations.length; i++) {
+            combinedSteps.append(explanations[i]).append(",");
+        }
+        recipe.setExplanation(combinedSteps.toString());
+
+        // 레시피 수정
+        boardRepository.modify(recipe);
     }
 }
 
