@@ -76,6 +76,10 @@ public class AdminController {
         }
     }
 
-
+    @GetMapping("testHome")
+    public String testHome() {
+        System.out.println("testHome Function Entered");
+        return "Admin/adminhome";
+    }
 
 }
