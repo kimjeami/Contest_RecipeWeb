@@ -12,13 +12,13 @@ public class MemberVo {
     private String birth;
     private String gender;
     private String phone;
-    private String site_url;
-    private String addr;
-    private String addr_detail;
-    private String biz_num;
-    private String enroll_date;
-    private String del_date;
-    private String ban_yn;
+    private String postcode;
+    private String address;
+    private String addressDetail;
+    private String addressExtra;
+    private String enrollDate;
+    private String delDate;
+    private String delYn;
+    private String banYn;
     private String profile;
-    private String point;
 }
