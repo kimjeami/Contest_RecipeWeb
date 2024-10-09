@@ -34,4 +34,5 @@ public class Recipe {
     private int recipte_order; // 레시피 순서
     private String  explanation; // 레시피 내용
     private String recipe_seq_img; // 레시피 순서 이미지
+    private String write_name; // 작성자 이름
 }

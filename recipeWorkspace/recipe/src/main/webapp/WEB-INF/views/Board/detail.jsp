@@ -83,6 +83,7 @@
                 </div>
                 <br/><br/>
                 <label>레시피 작성자</label>
+                ${recipe.write_name}
                 <br/><br/>
                 <label>레시피 문의하기</label>
                 <label>리뷰</label>
