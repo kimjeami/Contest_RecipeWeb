@@ -81,11 +81,14 @@
                      <br/><br/>
                        <div id="things_container">
                            <c:set var="thingsNames" value="${fn:split(recipe.things_name, ',')}" />
-                           <c:forEach var="thing" items="${thingsNames}">
-                               <c:set var="details" value="${fn:split(thing, '-')}"/>
-                               <label><input type="text" name="things_name[]" id="things_name[]" value="${details[0].trim()}"/></label>
-                               <label><input type="text" name="ea[]" id="ea[]" value="${details[1].trim()}"/></label>
-                               <label><input type="text" name="things_url[]" id="things_url[]" value="${details[2].trim()}"/></label>
+                           <c:set var="ea" value="${fn:split(recipe.ea, ',')}" />
+                           <c:set var="things_url" value="${fn:split(recipe.things_url, ',')}" />
+                           <c:set var="length" value="${fn:length(thingsNames)}"/>
+
+                          <c:forEach var="i" begin="0" end="${length - 1}">
+                               <label><input type="text" name="things_name[]" id="things_name[]" value="${thingsNames[i].trim()}"/></label>
+                               <label><input type="text" name="ea[]" id="ea[]" value="${ea[i].trim()}"/></label>
+                               <label><input type="text" name="things_url[]" id="things_url[]" value="${things_url[i].trim()}"/></label>
                                 <br/>
                            </c:forEach>
                        </div>

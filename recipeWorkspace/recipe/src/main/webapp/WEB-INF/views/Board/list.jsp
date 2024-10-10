@@ -18,7 +18,7 @@
                               <tr>
                                   <td>
                                       <c:if test="${recipe.thumbnail == 'nan'}">
-                                          <b>이미지가 없습니다..</b>
+                                           <img src="/images/sample.png" width="200px" height="200px">
                                       </c:if>
                                       <c:if test="${recipe.thumbnail != 'nan'}">
                                    <img src="/images/${recipe.thumbnail}" width="200px" height="200px">

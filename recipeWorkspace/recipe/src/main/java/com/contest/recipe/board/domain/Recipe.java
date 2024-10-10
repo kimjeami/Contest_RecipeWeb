@@ -28,7 +28,7 @@ public class Recipe {
     private String step; // 난이도
     private String time_taken; // 만드는 시간
     private String serving; // 인분 체크
-    private int ea;// 수량
+    private String ea;// 수량
     private String things_name; // 재료 이름
     private String things_url; // 재료 링크
     private int recipte_order; // 레시피 순서

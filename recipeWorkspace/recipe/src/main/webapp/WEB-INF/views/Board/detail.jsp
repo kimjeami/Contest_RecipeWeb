@@ -23,13 +23,13 @@
 
                 <h2>썸네일</h2>
                 <br/><br/>
-                 <c:if test="${recipe.thumbnail == 'nan'}">
-                    <b>이미지가 없습니다..</b>
-                 </c:if>
-                 <c:if test="${recipe.thumbnail != 'nan'}">
-                    <img src="/images/${recipe.thumbnail}" width="200px" height="200px">
-                 </c:if>
-                <br/><br/>
+                <c:if test="${recipe.thumbnail == 'nan'}">
+                   <img src="/images/sample.png" width="200px" height="200px">
+              </c:if>
+              <c:if test="${recipe.thumbnail != 'nan'}">
+                   <img src="/images/${recipe.thumbnail}" width="200px" height="200px">
+              </c:if>
+<br/><br/>
                 <h2>제목</h2>
                 <br/><br/>
                 <h3>${recipe.title }</h3>
@@ -49,15 +49,17 @@
                 <br/><br/>
               <div>
                 <c:set var="thingsNames" value="${fn:split(recipe.things_name, ',')}" />
+                 <c:set var="ea" value="${fn:split(recipe.ea, ',')}" />
+                 <c:set var="things_url" value="${fn:split(recipe.things_url, ',')}" />
+                 <c:set var="length" value="${fn:length(thingsNames)}"/>
                  이름  수량 링크
                  <br/><br/>
-                <c:forEach var="thing" items="${thingsNames}">
-                    <c:set var="details" value="${fn:split(thing, '-')}" />
-                    <c:forEach var="detail" items="${details}">
-                        ${detail.trim()}
-                    </c:forEach>
-                     <br/><br/>
-                </c:forEach>
+                  <c:forEach var="i" begin="0" end="${length - 1}">
+                      ${thingsNames[i].trim()}
+                      ${ea[i].trim()}
+                      <a href=${things_url[i].trim()}>${things_url[i].trim()}</a>
+                       <br/><br/>
+                  </c:forEach>
                 </div>
                 <br/><br/>
                 <h2>레시피 순서</h2>
@@ -65,13 +67,20 @@
                  <div>
                   <c:set var="explanations" value="${recipe.explanation.split(',')}"/>
                   <c:set var="imageFiles" value="${recipe.recipe_seq_img.split(',')}"/>
-
-
                   <c:set var="length" value="${fn:length(explanations)}"/>
 
                   <c:forEach var="i" begin="0" end="${length - 1}">
                       내용: ${explanations[i].trim()} <br>
-                      <img src="/images/${imageFiles[i].trim()}" width="200px" height="200px"><br>
+                      <c:if test="${ imageFiles[i].trim() == null}">
+                             <img src="/images/sample.png" width="200px" height="200px"><br/>
+                      </c:if>
+                      <c:if test="${imageFiles[i].trim() != null}">
+                         <img src="/images/${imageFiles[i].trim()}" width="200px" height="200px"><br/>
+                      </c:if>
+
+
+
+
                   </c:forEach>
 
                  </div>
