@@ -11,12 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -173,11 +168,22 @@ public class BoardServiceImpl implements BoardService{
         String[] eas = mul.getParameterValues("ea[]");
         String[] thingsUrls = mul.getParameterValues("things_url[]");
 
-        StringBuilder combinedIngredients = new StringBuilder();
+        StringBuilder combinedIngredients1 = new StringBuilder();
+        StringBuilder combinedIngredients2 = new StringBuilder();
+        StringBuilder combinedIngredients3 = new StringBuilder();
+
         for (int i = 0; i < thingsNames.length; i++) {
-            combinedIngredients.append(thingsNames[i]).append(" - ").append(eas[i]).append(" - ").append(thingsUrls[i]).append(",");
+            combinedIngredients1.append(thingsNames[i]).append(",");
         }
-        recipe.setThings_name(combinedIngredients.toString());
+        for (int i = 0; i < eas.length; i++) {
+            combinedIngredients2.append(eas[i]).append(",");
+        }
+        for (int i = 0; i < thingsUrls.length; i++) {
+            combinedIngredients3.append(thingsUrls[i]).append(",");
+        }
+        recipe.setThings_name(combinedIngredients1.toString());
+        recipe.setEa(combinedIngredients2.toString());
+        recipe.setThings_url(combinedIngredients3.toString());
 
         // 요리 순서 처리
         String[] explanations = mul.getParameterValues("explanation[]");
@@ -190,6 +196,15 @@ public class BoardServiceImpl implements BoardService{
 
         // 레시피 수정
         boardRepository.modify(recipe);
+    }
+
+    // 레시피 삭제
+
+
+    @Override
+    public int recipeDelete(int recipte_no) {
+        int result = boardRepository.recipeDelete(recipte_no);
+        return result;
     }
 }
 

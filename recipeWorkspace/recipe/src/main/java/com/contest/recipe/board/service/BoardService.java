@@ -3,7 +3,6 @@ package com.contest.recipe.board.service;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface BoardService {
@@ -19,5 +18,7 @@ public interface BoardService {
 
     public  void recipeMoidfy(MultipartHttpServletRequest mul,
                               HttpServletRequest request);
+
+    public int recipeDelete(int recipte_no);
 
 }

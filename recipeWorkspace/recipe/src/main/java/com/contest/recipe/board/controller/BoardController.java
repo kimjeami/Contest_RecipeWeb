@@ -89,4 +89,14 @@ public class BoardController {
 
     }
 
+    // 삭제하기
+    @GetMapping("delete")
+    public String delete(@RequestParam("recipte_no")int recipte_no,Model model){
+
+        int result = boardService.recipeDelete(recipte_no);
+        model.addAttribute("result", result);
+        return "Board/delete";
+
+    }
+
 }

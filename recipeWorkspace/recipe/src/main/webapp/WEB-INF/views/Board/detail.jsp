@@ -99,7 +99,7 @@
                 <br/><br/>
                 <c:if test="${recipe.write_no == loginMemberVo.no}">
                     <input type="button" value="수정하기" onclick="location.href='${contextPath}/recipe/modifyForm?recipte_no=${recipe.recipte_no}'"> &nbsp;
-                    <input type="button" value="삭제하기" onclick="location.href='${contextPath}/recipe/delete?writeNo=${data.writeNo }&imageFileName=${data.imageFileName }'"> &nbsp;
+                    <input type="button" value="삭제하기" onclick="location.href='${contextPath}/recipe/delete?recipte_no=${recipe.recipte_no}'"> &nbsp;
                 </c:if>
 
 

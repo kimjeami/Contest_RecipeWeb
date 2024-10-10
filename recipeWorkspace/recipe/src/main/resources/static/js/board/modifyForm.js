@@ -59,7 +59,7 @@ function RecipeCheck() {
                         alert("난이도는 필수 입력입니다.");
                         document.modifyForm.step.focus();
               }
-       else if(document.modifyForm.explanation[0].value=="") {
+       else if(document.modifyForm.explanation[0].value=="" && document.modifyForm.explanation.value=="") {
                         alert("레시피순서에 내용은 필수 입력입니다.");
                         document.modifyForm.explanation[0].focus();
           }

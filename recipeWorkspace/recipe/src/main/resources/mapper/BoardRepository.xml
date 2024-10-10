@@ -48,4 +48,8 @@
         where recipte_no=#{recipte_no}
     </update>
 
+    <delete id="recipeDelete">
+        DELETE recipe where recipte_no=#{recipte_no}
+    </delete>
+
 </mapper>

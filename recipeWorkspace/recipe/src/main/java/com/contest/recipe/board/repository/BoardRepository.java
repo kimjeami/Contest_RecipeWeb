@@ -17,5 +17,6 @@ public interface BoardRepository {
 
     public  void modify(Recipe recipe);
 
+    public  int recipeDelete(int recipte_no);
 
 }
