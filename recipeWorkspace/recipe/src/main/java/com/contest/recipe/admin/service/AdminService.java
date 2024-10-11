@@ -3,6 +3,7 @@ package com.contest.recipe.admin.service;
 
 import com.contest.recipe.admin.dao.AdminDao;
 import com.contest.recipe.admin.vo.AdminVo;
+import com.contest.recipe.member.vo.MemberVo;
 import com.contest.recipe.rank.vo.RankVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,13 +14,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdminService {
 
-    private final AdminDao adminDao;
+    private final AdminDao dao;
 
     public AdminVo adminLogin(AdminVo vo) {
-        return adminDao.adminLogin(vo);
+        return dao.adminLogin(vo);
     }
 
     public List<RankVo> adminRankData(AdminVo vo) {
-        return adminDao.adminRankData(vo);
+        return dao.adminRankData(vo);
+    }
+
+    public List<MemberVo> userData(MemberVo vo) {
+        return dao.userData(vo);
     }
 }
