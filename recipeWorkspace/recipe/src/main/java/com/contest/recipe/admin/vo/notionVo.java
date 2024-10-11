@@ -15,5 +15,5 @@ public class notionVo {
     private Integer hit;
     private LocalDateTime enrollDate;
     private LocalDateTime modifyDate;
-    private Boolean delYn;
+    private String delYn;
 }

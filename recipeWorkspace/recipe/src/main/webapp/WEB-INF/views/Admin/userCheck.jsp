@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>헬로월드</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
         <c:forEach items="${sessionScope.loginMemberVo}" var="user">
