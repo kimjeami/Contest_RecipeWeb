@@ -10,7 +10,7 @@ public interface BoardService {
     public void write(MultipartHttpServletRequest mul, HttpServletResponse response,
                        HttpServletRequest request);
 
-    public void recipeList(Model model);
+    public void recipeList(Model model,String keyword, Integer page);
 
     public void recipeDetail(int recipte_no, Model model);
 

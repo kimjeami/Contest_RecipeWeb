@@ -11,7 +11,13 @@ public interface BoardRepository {
 
     public void Recipesave(Recipe recipe);
 
-    public List<Recipe> recipeList();
+
+
+    public  int countRecipe(String keyword);
+
+    public List<Recipe> recipeList(String keyword,int from, int rows);
+
+
 
     public Recipe recipeDetail(int recipte_no);
 

@@ -48,13 +48,19 @@ public class BoardController {
 
     // 목록 페이지
     @GetMapping("list")
-    public  String list(Model model) {
+    public  String list(Model model,@RequestParam(required = false) String keyword, Integer page) {
 
-        boardService.recipeList(model);
+        boardService.recipeList(model,keyword,page);
+
 
         return "Board/list";
 
     }
+
+
+
+
+
 
     // 상세 페이지
     @GetMapping("detail")
@@ -98,5 +104,9 @@ public class BoardController {
         return "Board/delete";
 
     }
+
+    // 문의하기
+    GetMapping("")
+
 
 }

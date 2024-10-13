@@ -33,9 +33,23 @@
         <result property="write_name" column="write_name"/>
     </resultMap>
 
-    <select id="recipeList" resultMap="recipe">
-        SELECT * FROM recipe
+
+    <select id="countRecipe"  resultType="int">
+        SELECT COUNT(*) FROM recipe
+        WHERE LOWER(title) LIKE '%' || LOWER(#{keyword}) || '%'
     </select>
+
+    <select id="recipeList" resultMap="recipe">
+        SELECT *
+        FROM (
+        SELECT r.*, ROW_NUMBER() OVER (ORDER BY title) AS rn
+        FROM recipe r
+        WHERE LOWER(title) LIKE '%' || LOWER(#{keyword}) || '%'
+        )
+        WHERE rn BETWEEN #{from} + 1 AND #{from} + #{rows}
+
+    </select>
+
 
     <select id="recipeDetail" resultMap="recipe">
         SELECT * FROM recipe
