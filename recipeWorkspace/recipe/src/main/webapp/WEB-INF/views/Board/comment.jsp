@@ -13,6 +13,7 @@
             <div class="mb-3 mt-3">
                  <div class="mb-3" name="myform" id="myform" >
                     <input type="hidden" id="recipte_no" name="recipte_no" value="${recipe.recipte_no}">
+                    <input type="hidden" id="member_reply_no" name="member_reply_no" value="${loginMemberVo.no}">
                     <input type="hidden" id="member_name" name="member_name" value="${loginMemberVo.nick}">
                     <fieldset>
                     		<span class="text-bold">별점을 선택해주세요</span>

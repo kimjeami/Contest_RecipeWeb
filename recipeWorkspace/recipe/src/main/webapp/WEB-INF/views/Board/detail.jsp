@@ -94,7 +94,7 @@
                 <label>레시피 작성자</label>
                 ${recipe.write_name}
                 <br/><br/>
-                <label>레시피 문의하기</label>
+                <input type="button" value="문의하기" onclick="location.href='${contextPath}/recipe/inquiryForm?recipte_no=${recipe.recipte_no}'">
                 <label>리뷰</label>
                 <br/><br/>
                 <c:if test="${recipe.write_no == loginMemberVo.no}">

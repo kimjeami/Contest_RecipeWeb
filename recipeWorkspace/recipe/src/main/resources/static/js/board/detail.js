@@ -12,7 +12,7 @@ $(document).ready(function() {
         const answer = $('#input_comment').val();
         const member_name = $('#member_name').val();
         const scope = $('input[name="reviewStar"]:checked').val();
-
+        const member_reply_no = $('#member_reply_no').val();
 
         if (answer.trim() === '') {
             alert('댓글 내용을 입력하세요.');
@@ -26,7 +26,8 @@ $(document).ready(function() {
                 recipte_no: recipte_no,
                 answer: answer,
                 member_name: member_name,
-                scope: scope
+                scope: scope,
+                member_reply_no: member_reply_no
             },
             success: function(response) {
                 // 댓글 등록 후 UI 업데이트

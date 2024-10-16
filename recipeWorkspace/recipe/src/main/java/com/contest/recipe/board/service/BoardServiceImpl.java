@@ -1,7 +1,9 @@
 package com.contest.recipe.board.service;
 
 import com.contest.recipe.board.domain.Recipe;
+import com.contest.recipe.board.domain.Recipe_inquiry;
 import com.contest.recipe.board.repository.BoardRepository;
+import com.contest.recipe.board.repository.Recipe_inquiryRepository;
 import com.contest.recipe.util.U;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,6 +29,9 @@ public class BoardServiceImpl implements BoardService{
 
 
     private BoardRepository boardRepository;
+
+    @Autowired
+    private Recipe_inquiryRepository recipe_inquiryRepository;
 
     @Autowired
     public BoardServiceImpl(SqlSession sqlSession){  // MyBatis 가 생성한 SqlSession 빈(bean) 객체 주입
@@ -247,6 +252,33 @@ public class BoardServiceImpl implements BoardService{
     public int recipeDelete(int recipte_no) {
         int result = boardRepository.recipeDelete(recipte_no);
         return result;
+    }
+
+
+    //레시피 문의하기
+
+
+    @Override
+    public void recipeInquiry(int recipte_no, Model model) {
+        Recipe recipe = boardRepository.recipeInquiry(recipte_no);
+        model.addAttribute("recipe",recipe);
+    }
+
+    // 글 등록
+
+
+    @Override
+    public void inquirysave(HttpServletRequest request) {
+        Recipe_inquiry recipe_inquiry = new Recipe_inquiry();
+
+        recipe_inquiry.setRecipte_no(Integer.parseInt(request.getParameter("recipte_no")));
+        recipe_inquiry.setWrite_no(Integer.parseInt(request.getParameter("write_no")));
+        recipe_inquiry.setAwnser_no(Integer.parseInt(request.getParameter("awnser_no")));
+        recipe_inquiry.setTitle(request.getParameter("title"));
+        recipe_inquiry.setContent(request.getParameter("content"));
+
+        recipe_inquiryRepository.inquirysave(recipe_inquiry);
+
     }
 }
 

@@ -18,12 +18,12 @@ public class CommentController {
 
 
     @PostMapping("write")
-    public void write(@RequestParam("recipte_no") int recipte_no,
-                        String answer, String member_name, int scope
-
+    public void write(HttpServletRequest request
                       ){
 
-        commentService.write(recipte_no,answer,member_name,scope);
+        System.out.println("member_reply_no:"+request.getParameter("member_reply_no"));
+
+        commentService.write(request);
 
     }
 

@@ -21,4 +21,8 @@ public interface BoardService {
 
     public int recipeDelete(int recipte_no);
 
+    public  void recipeInquiry(int recipte_no, Model model);
+
+    public  void inquirysave(HttpServletRequest request);
+
 }

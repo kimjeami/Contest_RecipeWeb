@@ -2,6 +2,7 @@ package com.contest.recipe.board.service;
 
 import com.contest.recipe.board.domain.Recipte_comment;
 import com.contest.recipe.board.repository.CommentRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +22,14 @@ public class CommentServiceImpl implements CommentService{
 
 
     @Override
-    public void write(int recipte_no , String answer, String member_name,int scope) {
+    public void write(HttpServletRequest request) {
         Recipte_comment recipte_comment = new Recipte_comment();
 
-        recipte_comment.setRecipte_no(recipte_no);
-        recipte_comment.setAnswer(answer);
-        recipte_comment.setMember_name(member_name);
-        recipte_comment.setScope(scope);
+        recipte_comment.setRecipte_no(Integer.parseInt(request.getParameter("recipte_no")));
+        recipte_comment.setAnswer(request.getParameter("answer"));
+        recipte_comment.setMember_name(request.getParameter("member_name"));
+        recipte_comment.setMember_reply_no(Integer.parseInt(request.getParameter("member_reply_no")));
+        recipte_comment.setScope(Integer.parseInt(request.getParameter("scope")));
         commentRepository.Commentsave(recipte_comment);
 
 

@@ -106,7 +106,27 @@ public class BoardController {
     }
 
     // 문의하기
-    GetMapping("")
+    @GetMapping("inquiryForm")
+    public String inquiryForm(@RequestParam("recipte_no")int recipte_no,Model model){
+
+        boardService.recipeInquiry(recipte_no,model);
+
+        return "Board/inquiryForm";
+    }
+
+    // 글 등록
+    @PostMapping("inquiry")
+    public String inquiry(HttpServletRequest request){
+
+
+
+
+       boardService.inquirysave(request);
+
+        return  "Board/inquiry";
+    }
+
+
 
 
 }

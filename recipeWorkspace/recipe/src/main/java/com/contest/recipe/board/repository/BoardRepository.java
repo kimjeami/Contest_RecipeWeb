@@ -25,4 +25,6 @@ public interface BoardRepository {
 
     public  int recipeDelete(int recipte_no);
 
+    public  Recipe recipeInquiry(int recipte_no);
+
 }

@@ -66,4 +66,9 @@
         DELETE recipe where recipte_no=#{recipte_no}
     </delete>
 
+    <select id="recipeInquiry" resultMap="recipe">
+        SELECT * FROM recipe
+        where recipte_no=#{recipte_no}
+    </select>
+
 </mapper>
