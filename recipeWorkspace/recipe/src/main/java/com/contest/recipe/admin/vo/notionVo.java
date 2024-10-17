@@ -13,7 +13,7 @@ public class notionVo {
     private String title;
     private String content;
     private Integer hit;
-    private LocalDateTime enrollDate;
-    private LocalDateTime modifyDate;
+    private String enrollDate;
+    private String modifyDate;
     private String delYn;
 }

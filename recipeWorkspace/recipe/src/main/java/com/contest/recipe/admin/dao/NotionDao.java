@@ -17,4 +17,8 @@ public class NotionDao {
     public List<notionVo> notionData(notionVo vo) {
         return mapper.notionData(vo);
     }
+
+    public notionVo notionDetailData(notionVo vo) {
+        return mapper.notionDetailData(vo);
+    }
 }
