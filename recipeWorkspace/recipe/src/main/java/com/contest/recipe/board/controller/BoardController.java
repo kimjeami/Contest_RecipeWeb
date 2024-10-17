@@ -115,8 +115,8 @@ public class BoardController {
     }
 
     // 글 등록
-    @PostMapping("inquiry")
-    public String inquiry(HttpServletRequest request){
+    @PostMapping("inquirysave")
+    public String inquirysave(HttpServletRequest request){
 
 
 
@@ -126,7 +126,45 @@ public class BoardController {
         return  "Board/inquiry";
     }
 
+    // 작성한 문의 리스트 가져오기
+    @GetMapping("inquirylist")
+    public String inquirylist(@RequestParam("write_no")int write_no,Model model) {
+
+        boardService.inquirylist(write_no,model);
+
+        return "Board/inquirylist";
+    }
+
+    // 답변할 문의 리스트 가져오기
+    @GetMapping("answerlist")
+    public String answerlist(@RequestParam("awnser_no")int awnser_no,Model model) {
+            boardService.answerlist(awnser_no,model);
+
+        return "Board/answerlist";
+    }
 
 
+    // 레시피 문의 가져오기
+    @GetMapping("inquiry")
+    public String inquiry(@RequestParam("recipte_no")int recipte_no,@RequestParam("write_no")int write_no,@RequestParam("awnser_no")int awnser_no,Model model){
 
+        boardService.inquirydetail(recipte_no,write_no,awnser_no,model);
+        return  "Board/inquiry";
+    }
+
+    // 답변할 내용 작성
+    @GetMapping("answerForm")
+    public  String answerForm(@RequestParam("recipte_no")int recipte_no,@RequestParam("write_no")int write_no,@RequestParam("awnser_no")int awnser_no,Model model){
+
+        boardService.answerForm(recipte_no,write_no,awnser_no,model);
+        return  "Board/answerForm";
+    }
+
+    // 답변 하기
+    @PostMapping("answer")
+    public  String answer(HttpServletRequest request) {
+
+            boardService.answer(request);
+        return "Board/answer";
+    }
 }

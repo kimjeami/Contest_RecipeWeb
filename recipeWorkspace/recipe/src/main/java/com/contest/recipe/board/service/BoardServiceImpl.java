@@ -280,6 +280,54 @@ public class BoardServiceImpl implements BoardService{
         recipe_inquiryRepository.inquirysave(recipe_inquiry);
 
     }
+    // 레시피 문의 리스트
+    @Override
+    public void inquirylist(int write_no, Model model) {
+
+        model.addAttribute("recipe_inquiry",recipe_inquiryRepository.inquirylist(write_no));
+
+    }
+
+
+    // 레시피 답변할 리스트
+
+    @Override
+    public void answerlist(int awnser_no, Model model) {
+        model.addAttribute("recipe_inquiry",recipe_inquiryRepository.answerlist(awnser_no));
+    }
+
+
+    // 레시피 문의 상세보기
+
+    @Override
+    public void inquirydetail(int recipte_no, int write_no, int awnser_no, Model model) {
+        Recipe_inquiry recipe_inquiry = recipe_inquiryRepository.inquirydetail(recipte_no,write_no,awnser_no);
+
+        model.addAttribute("recipe_inquiry",recipe_inquiry);
+    }
+
+    // 레시피 답변
+    @Override
+    public void answerForm(int recipte_no, int write_no, int awnser_no, Model model) {
+        Recipe_inquiry recipe_inquiry = recipe_inquiryRepository.inquirydetail(recipte_no,write_no,awnser_no);
+
+        model.addAttribute("recipe_inquiry",recipe_inquiry);
+
+    }
+
+    // 답변 하기
+
+    @Override
+    public void answer(HttpServletRequest request) {
+        Recipe_inquiry recipe_inquiry = new Recipe_inquiry();
+
+        recipe_inquiry.setRecipte_no(Integer.parseInt(request.getParameter("recipte_no")));
+        recipe_inquiry.setAwnser_no(Integer.parseInt(request.getParameter("awnser_no")));
+        recipe_inquiry.setWrite_no(Integer.parseInt(request.getParameter("write_no")));
+        recipe_inquiry.setAnswer(request.getParameter("answer"));
+
+        recipe_inquiryRepository.answer(recipe_inquiry);
+    }
 }
 
 

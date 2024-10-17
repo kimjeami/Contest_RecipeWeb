@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.contest.recipe.board.repository.Recipe_inquiryRepository">
+    <insert id="inquirysave">
+        insert into recipe_inquiry(no, recipte_no,write_no,awnser_no,title,content,enroll_date)
+        VALUES (SEQ_RECIPE_INQUIRY_NO.NEXTVAL,#{recipte_no},#{write_no},#{awnser_no},#{title},#{content},sysdate)
+    </insert>
+
+    <resultMap type="com.contest.recipe.board.domain.Recipe_inquiry" id="recipe_inquiry">
+        <id property="no" column="no"/>
+        <id property="recipte_no" column="recipte_no"/>
+        <id property="write_no" column="write_no"/>
+        <id property="awnser_no" column="awnser_no"/>
+        <id property="title" column="title"/>
+        <id property="content" column="content"/>
+        <id property="del_yn" column="del_yn"/>
+        <id property="enroll_date" column="enroll_date"/>
+        <id property="answer" column="answer"/>
+        <id property="answer_date" column="answer_date"/>
+        <id property="state" column="state"/>
+    </resultMap>
+
+    <select id="inquirylist" resultMap="recipe_inquiry">
+        SELECT * FROM recipe_inquiry
+        where write_no = #{write_no}
+    </select>
+
+    <select id="answerlist" resultMap="recipe_inquiry">
+        SELECT * FROM recipe_inquiry
+        where awnser_no = #{awnser_no}
+    </select>
+
+    <select id="inquirydetail" resultMap="recipe_inquiry">
+        SELECT * FROM recipe_inquiry
+        where recipte_no = #{recipte_no}
+        and write_no = #{write_no}
+        and awnser_no = #{awnser_no}
+    </select>
+    <update id="answer">
+        UPDATE recipe_inquiry
+        set answer=#{answer}, state='y'
+        where recipte_no=#{recipte_no}
+        and write_no = #{write_no}
+        and awnser_no = #{awnser_no}
+    </update>
+
+</mapper>

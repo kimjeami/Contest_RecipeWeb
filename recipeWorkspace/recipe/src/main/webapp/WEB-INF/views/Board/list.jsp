@@ -36,6 +36,8 @@
                             </c:choose>
                         </div>
                     </c:forEach>
+                      <a href="${contextPath}/recipe/inquirylist?write_no=${loginMemberVo.no}">문의 내역</a>
+                      <a href="${contextPath}/recipe/answerlist?awnser_no=${loginMemberVo.no}">답변 내역</a>
                 </div>
 
                     <jsp:include page="/WEB-INF/views/Board/pagination.jsp" />
