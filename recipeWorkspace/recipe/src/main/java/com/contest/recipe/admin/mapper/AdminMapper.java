@@ -2,6 +2,7 @@ package com.contest.recipe.admin.mapper;
 
 
 import com.contest.recipe.admin.vo.AdminVo;
+import com.contest.recipe.member.vo.MemberVo;
 import com.contest.recipe.rank.vo.RankVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -26,4 +27,10 @@ public interface AdminMapper {
             WHERE ADMIN_NO = #{adminNo}
             """)
     List<RankVo> adminRankData(AdminVo vo);
+
+    @Select("""
+            SELECT *
+            FROM MEMBER
+            """)
+    List<MemberVo> userData(MemberVo vo);
 }

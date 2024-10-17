@@ -3,6 +3,7 @@ package com.contest.recipe.admin.dao;
 
 import com.contest.recipe.admin.mapper.AdminMapper;
 import com.contest.recipe.admin.vo.AdminVo;
+import com.contest.recipe.member.vo.MemberVo;
 import com.contest.recipe.rank.vo.RankVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -21,5 +22,9 @@ public class AdminDao {
 
     public List<RankVo> adminRankData(AdminVo vo) {
         return mapper.adminRankData(vo);
+    }
+
+    public List<MemberVo> userData(MemberVo vo) {
+        return mapper.userData(vo);
     }
 }
