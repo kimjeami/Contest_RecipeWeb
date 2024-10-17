@@ -7,11 +7,12 @@
 <meta charset="UTF-8">
 <title>헬로월드</title>
 <script defer src="/js/admin/notionList.js"></script>
+<link rel="stylesheet" href="/css/admin/notionList.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="out">
-    <table>
+    <table id="mainTable">
         <thead>
             <tr>
                 <td>번호</td>

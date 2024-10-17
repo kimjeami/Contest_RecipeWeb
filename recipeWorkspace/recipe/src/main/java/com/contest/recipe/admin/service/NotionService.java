@@ -16,4 +16,8 @@ public class NotionService {
     public List<notionVo> notionData(notionVo vo) {
         return dao.notionData(vo);
     }
+
+    public notionVo notionDetailData(notionVo vo) {
+        return dao.notionDetailData(vo);
+    }
 }

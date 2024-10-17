@@ -26,4 +26,16 @@ public class NotionController {
     public String notionList(){
         return "admin/notionList";
     }
+
+
+    @ResponseBody
+    @GetMapping("notionDetailData")
+    public notionVo notionDetailData(notionVo vo){
+        return service.notionDetailData(vo);
+    }
+
+    @GetMapping("notionDetail")
+    public String notionDetail(){
+        return "admin/notionDetail";
+    }
 }
