@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
     <title>testAdminhome</title>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/views/Admin/adminSidebar.jsp" />
+    <jsp:include page="/WEB-INF/views/admin/adminSidebar.jsp" />
     <h2>사이드바 불러오기 테스트</h2>
     <p>대충 머 css js html로 찢어놓은 친구덜 잘 되는지 체크</p>
 </body>
