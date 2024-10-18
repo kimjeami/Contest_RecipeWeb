@@ -9,3 +9,73 @@ VALUES(SEQ_MEMBER_NO.NEXTVAL,'user03','1234','쿼카민','user03@gmail.com','001
 
 INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
 VALUES(SEQ_MEMBER_NO.NEXTVAL,'user04','1234','지각쟁이','user04@gmail.com','000303','M','01044444444');
+
+
+
+INSERT INTO ADMIN(ADMIN_NO, ADMIN_ID, ADMIN_PWD) VALUES(10,'admin10','1234');
+INSERT INTO ADMIN(ADMIN_NO, ADMIN_ID, ADMIN_PWD) VALUES(20,'admin20','1234');
+INSERT INTO ADMIN(ADMIN_NO, ADMIN_ID, ADMIN_PWD) VALUES(30,'admin30','1234');
+
+
+INSERT INTO RANK(RANK_NO,RANK_NAME) VALUES(1,'등록권한');
+INSERT INTO RANK(RANK_NO,RANK_NAME) VALUES(2,'수정권한');
+INSERT INTO RANK(RANK_NO,RANK_NAME) VALUES(3,'삭제권한');
+INSERT INTO RANK(RANK_NO,RANK_NAME) VALUES(4,'읽기권한');
+
+
+INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(1,'요리');
+INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(2,'가구');
+INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(3,'컴퓨터');
+INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(4,'칵테일');
+INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(5,'기타');
+
+
+BEGIN
+FOR i IN 1..100 LOOP
+INSERT INTO recipe
+(
+recipte_no,
+write_no,
+title,
+thumbnail,
+introduce,
+recipe_cate_no,
+serving,
+time_taken,
+step,
+tip,
+enroll_date,
+seq,
+things_name,
+ea,
+things_url,
+RECIPTE_ORDER,
+explanation,
+recipe_seq_img,
+write_name
+)
+VALUES
+(
+SEQ_REPORT_NO.NEXTVAL,
+1000,
+'제목' || i,
+'face01.png',
+'소개글' || i,
+1,
+1,
+1,
+'하',
+'소개팁' || i,
+SYSDATE,
+1,
+'재료' || i,
+'수량' || i,
+'naver.com',
+1,
+'레시피내용' || i,
+'face01.png',
+'이용진'
+);
+END LOOP;
+END;
+/
