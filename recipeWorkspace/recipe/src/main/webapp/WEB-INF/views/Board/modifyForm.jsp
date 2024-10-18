@@ -7,7 +7,7 @@
     // 세션에서 로그인된 사용자 정보 확인
     Object loginMember = session.getAttribute("loginMemberVo");
 
-    // 로그인 정보가 없을 경우
+    // 로그인 정보가 없을 경우 로그인 페이지로 이동
     if (loginMember == null) {
 %>
         <script type="text/javascript">
@@ -17,7 +17,8 @@
 <%
         return;
     }
-%>
+ %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,7 @@
 	}
 </script>
 
-<link rel="stylesheet" href="/css/board/boardWrite.css">
+<link rel="stylesheet" href="/css/board/modifyForm.css">
 <jsp:include page="/WEB-INF/views/layout/util.jsp" />
 
 </head>
@@ -51,37 +52,37 @@
                  <form action="${contextPath }/recipe/modify"  method="post" enctype="multipart/form-data" id="modifyForm", name="modifyForm">
                      <input type="hidden" id="recipte_no" name="recipte_no" value="${recipe.recipte_no}">
                      <input type="hidden" id="write_no" name="write_no" value="${loginMemberVo.no}">
+
                      레시피 제목 <input type="text" id="title" name="title" value="${recipe.title}">
                      <br/><br/>
+                   <div id="introduce_css">
+                        <label id="recipe_introduce" name="recipe_introduce">레시피 소개</label>
+                            <textarea rows="5" placeholder="내용을 입력하세요" name="introduce" id="introduce">${recipe.introduce}</textarea>
+                        </div>
+
                    <div id="thumbnal_css">
                       <input type="file" id="thumbnal" name="thumbnal" onchange="readURL(this, 'preview')"/>
                      <img src="/images/${recipe.thumbnail}" id="preview" width="200px" height="200px" alt="선택된 이미지가 없습니다." data-default="/images/${recipe.thumbnail}">
-
-
-
                      <br/><br/>
                      썸네일
                     </div>
                      <br/><br/>
-                     <div id="introduce_css">
-                     <label id="recipe_introduce" name="recipe_introduce">레시피 소개</label>
-                         <textarea rows="5" placeholder="내용을 입력하세요" name="introduce" id="introduce">${recipe.introduce}</textarea>
-                     </div>
+
                      <br/>
                      <div style="flex: 1; margin-left: 20px;">
                          <label class="input">카테고리</label>
-                         <select id="recipe_cate_no" name="recipe_cate_no">
-                               <option value="">카테고리 선택</option>
-                               <option selected="${recipe.recipe_cate_no == 1}" value="1">요리</option>
-                               <option selected="${recipe.recipe_cate_no == 2}" value="2">가구</option>
-                               <option selected="${recipe.recipe_cate_no == 3}" value="3">컴퓨터</option>
-                               <option selected="${recipe.recipe_cate_no == 4}" value="4">칵테일</option>
-                               <option selected="${recipe.recipe_cate_no == 5}" value="5">기타</option>
-                         </select>
+                       <select id="recipe_cate_no" name="recipe_cate_no">
+                           <option value="">카테고리 선택</option>
+                           <option value="1" ${recipe.recipe_cate_no == 1 ? 'selected' : ''}>요리</option>
+                           <option value="2" ${recipe.recipe_cate_no == 2 ? 'selected' : ''}>가구</option>
+                           <option value="3" ${recipe.recipe_cate_no == 3 ? 'selected' : ''}>컴퓨터</option>
+                           <option value="4" ${recipe.recipe_cate_no == 4 ? 'selected' : ''}>칵테일</option>
+                           <option value="5" ${recipe.recipe_cate_no == 5 ? 'selected' : ''}>기타</option>
+                       </select>
                      </div>
                      <br/>
 
-                     레시피 정보
+                     레시피 정보<br/>
                      <label>인분<input type="text" id="serving" name="serving" value="${recipe.serving}"/></label>
                      <label>시간<input type="text" id="time_taken" name="time_taken" value="${recipe.time_taken}"/></label>
                      <label>난이도<input type="text" id="step" name="step" value="${recipe.step}"/></label>
@@ -142,11 +143,17 @@
                      <textarea rows="5" placeholder="내용을 입력하세요" name="tip" id="tip">${recipe.tip}</textarea>
                      <br/><br/>
 
-                     <div id="submit_css">
+                     <div class="submit_css">
                          <button type="button" onclick="RecipeCheck()">레시피 수정하기</button>
                          &emsp; &emsp;&emsp; &emsp;
                          <button type="reset">취소</button>
                      </div>
+                         <select id="state" name="state">
+                              <option value="0" ${recipe.state == 0 ? 'selected' : ''}>판매중</option>
+                               <option value="1" ${recipe.state == 1 ? 'selected' : ''}>판매완료</option>
+                       </select>
+                    </div>
+
                  </form>
                 </div>
            </main>

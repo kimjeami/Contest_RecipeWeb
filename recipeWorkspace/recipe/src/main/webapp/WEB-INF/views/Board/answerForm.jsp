@@ -20,11 +20,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의하기</title>
+<title>답변하기</title>
  <jsp:include page="/WEB-INF/views/layout/util.jsp" />
+ <link rel="stylesheet" href="/css/board/answer.css">
 </head>
 <body>
-    <h1>문의하기</h1>
     <div class="container">
             <jsp:include page="/WEB-INF/views/layout/nav.jsp" />
             <main class="main">
@@ -33,11 +33,13 @@
         <input type="hidden" value="${recipe_inquiry.recipte_no}" id="recipte_no" name="recipte_no">
         <input type="hidden" value="${recipe_inquiry.write_no}" id="write_no" name="write_no">
         <input type="hidden" value="${recipe_inquiry.awnser_no}" id="awnser_no" name="awnser_no">
-        <h2>답변 내용</h2>
-        <input type="text" id="answer" name="answer">
+        <h2>답변</h2>
+       <textarea rows="5" placeholder="내용을 입력하세요" name="answer" id="answer"></textarea>
          <br/>
-         <input type="submit" value="등록"/>&nbsp;
-         <input type="reset" value="취소"/>
+         <div class="button-container">
+                     <input type="submit" value="등록" class="submit-btn"/>&nbsp;
+                     <input type="reset" value="취소" class="submit-btn"/>
+         </div>
      </form>
         </main>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />

@@ -42,10 +42,12 @@
     <select id="recipeList" resultMap="recipe">
         SELECT *
         FROM (
-        SELECT r.*, ROW_NUMBER() OVER (ORDER BY title) AS rn
+        SELECT r.*, ROW_NUMBER() OVER (ORDER BY recipte_no) AS rn
         FROM recipe r
         WHERE LOWER(title) LIKE '%' || LOWER(#{keyword}) || '%'
+        AND r.state != 3
         )
+
         WHERE rn BETWEEN #{from} + 1 AND #{from} + #{rows}
 
     </select>
@@ -58,13 +60,13 @@
 
     <update id="modify">
         UPDATE recipe
-        set title=#{title}, thumbnail=#{thumbnail}, introduce=#{introduce},recipe_cate_no =#{recipe_cate_no},serving=#{serving},time_taken=#{time_taken},step=#{step},tip=#{tip},modify_date=sysdate,things_name=#{things_name},ea=#{ea},things_url=#{things_url},explanation=#{explanation},recipe_seq_img=#{recipe_seq_img}
+        set title=#{title}, thumbnail=#{thumbnail}, introduce=#{introduce},recipe_cate_no =#{recipe_cate_no},serving=#{serving},time_taken=#{time_taken},step=#{step},tip=#{tip},modify_date=sysdate,things_name=#{things_name},ea=#{ea},things_url=#{things_url},explanation=#{explanation},recipe_seq_img=#{recipe_seq_img},state=${state}
         where recipte_no=#{recipte_no}
     </update>
 
     <update id="recipeDelete">
         UPDATE recipe
-        set del_yn='y'
+        set del_yn='y' ,state=3
         where recipte_no=#{recipte_no}
     </update>
 

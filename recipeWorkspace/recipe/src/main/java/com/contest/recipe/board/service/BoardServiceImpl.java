@@ -209,7 +209,7 @@ public class BoardServiceImpl implements BoardService{
         recipe.setTime_taken(mul.getParameter("time_taken"));
         recipe.setStep(mul.getParameter("step"));
         recipe.setTip(mul.getParameter("tip"));
-
+        recipe.setState(Integer.parseInt(mul.getParameter("state")));
         // 재료 정보 처리
         String[] thingsNames = mul.getParameterValues("things_name[]");
         String[] eas = mul.getParameterValues("ea[]");

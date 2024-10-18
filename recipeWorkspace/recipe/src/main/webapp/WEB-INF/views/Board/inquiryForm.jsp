@@ -33,10 +33,10 @@
         <input type="hidden" value="${recipe.recipte_no}" id="recipte_no" name="recipte_no">
         <input type="hidden" value="${loginMemberVo.no}" id="write_no" name="write_no">
         <input type="hidden" value="${recipe.write_no}" id="awnser_no" name="awnser_no">
-        <label>제목</label>
+        <h2>제목</h2>
         <input type="text" id="title" name="title">
-        <label>내용</label>
-        <input type="text" id="content" name="content">
+        <h2>내용</h2>
+        <textarea rows="5" placeholder="내용을 입력하세요" name="content" id="content"></textarea>
          <br/>
          <div class="button-container">
              <input type="submit" value="등록" class="submit-btn"/>&nbsp;

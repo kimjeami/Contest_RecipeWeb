@@ -21,6 +21,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문의 답변</title>
+    <link rel="stylesheet" href="/css/board/inquiry.css">
     <jsp:include page="/WEB-INF/views/layout/util.jsp" />
 
 </head>
@@ -32,10 +33,10 @@
                <h2>레시피 문의</h2>
               <div>
                <label>문의 제목</label>
-               <input type="text" value="${recipe_inquiry.title}"/>
+               <input type="text" value="${recipe_inquiry.title}" id="title" name="title" readonly/>
                <br/><br/>
                <label>문의 내용</label>
-               <input type="text" value="${recipe_inquiry.content}"/>
+               <textarea rows="5" placeholder="내용을 입력하세요" name="content" id="content" readonly>${recipe_inquiry.content}</textarea>
               </div>
 
 
@@ -43,10 +44,10 @@
                <label>답변 내용</label>
                <c:choose>
                    <c:when test="${recipe_inquiry.answer == null}">
-                       <input type="text" value="답변중입니다."/>
+                       <input type="text" value="답변중입니다." readonly/>
                    </c:when>
                    <c:otherwise>
-                       <input type="text" value="${recipe_inquiry.answer}"/>
+                        <textarea rows="5" placeholder="내용을 입력하세요" name="content" id="content" readonly>${recipe_inquiry.answer}</textarea>
                    </c:otherwise>
                </c:choose>
            </div>

@@ -19,7 +19,6 @@
 .recipe-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* 아이템 간의 간격 */
 }
 
 .recipe-item {
@@ -29,9 +28,14 @@
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
+    margin: 0;
 }
 
 .recipe-item img {
     width: 100%;
     height: auto;
 }
+
+ .pagination-container {
+              text-align:center;  /* 가운데 정렬 */
+     }

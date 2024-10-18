@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <title>삭제 결과</title>
     <script>
-        // 서버에서 전달된 result 값에 따라 알림 및 페이지 이동 처리
         window.onload = function() {
             const result = <%= request.getAttribute("result") %>;
 

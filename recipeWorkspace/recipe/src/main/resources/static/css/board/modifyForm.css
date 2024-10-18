@@ -1,0 +1,65 @@
+#modifyForm{
+    font-size:20px;
+
+    margin:60px;
+
+
+
+}
+
+
+#title{
+
+    width:40%;
+    height:20px;
+}
+
+
+#thumbnal_css{
+
+    float:right;
+    text-align: center;
+
+}
+
+
+
+
+#introduce{
+    width:700px;
+}
+
+#recipe_introduce{
+    top:0;
+}
+
+#recipe_submit {
+   text-align: center;
+}
+
+#things_css{
+    margin:20px;
+}
+
+
+.submit_css {
+    text-align: center;
+}
+
+.submit_css button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#explanation{
+    width:60%;
+}
+
+#tip {
+    width:60%;
+}
+

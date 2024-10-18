@@ -118,12 +118,9 @@ public class BoardController {
     @PostMapping("inquirysave")
     public String inquirysave(HttpServletRequest request){
 
-
-
-
        boardService.inquirysave(request);
 
-        return  "Board/inquiry";
+        return "redirect:/recipe/list";
     }
 
     // 작성한 문의 리스트 가져오기

@@ -25,9 +25,6 @@
     <title>상세 페이지입니다.</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="/js/board/detail.js"></script>
-  <script type="text/javascript">
-      const recipeData = [[${recipe}]];
-  </script>
  <link rel="stylesheet" href="/css/board/detail.css">
    <jsp:include page="/WEB-INF/views/layout/util.jsp" />
 
