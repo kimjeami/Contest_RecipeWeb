@@ -7,11 +7,25 @@
         </div>
         <div class="nav__right">
             <form action="/recipe/list" method="get">
-                   <input type="text" class="nav__upper--search" placeholder="검색해주세요" name="keyword">
+                <select name="category" class="nav__upper--category">
+                    <option value="all">전체</option>
+                    <option value="1">요리</option>
+                    <option value="2">가구</option>
+                    <option value="3">컴퓨터</option>
+                    <option value="4">칵테일</option>
+                    <option value="5">기타</option>
+                </select>
+                <input type="text" class="nav__upper--search" placeholder="검색해주세요" name="keyword">
             </form>
-            <i>＋</i>
-            <i>👤</i>
-            <i>❤️</i>
+            <a href="/recipe/write">
+              <img src="/img/plus.svg" alt="write">
+            </a>
+            <a href="/member/mypage">
+              <img src="/img/user.svg" alt="mypage">
+            </a>
+            <a href="/recipe/favorite">
+              <img src="/img/heart-straight.svg" alt="favorite">
+            </a>
         </div>
     </div>
     <div class="sub-nav">
