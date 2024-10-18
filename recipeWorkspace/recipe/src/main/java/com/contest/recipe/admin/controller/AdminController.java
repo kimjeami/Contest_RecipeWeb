@@ -40,7 +40,7 @@ public class AdminController {
 
     @GetMapping("login")
     public String adminLogin(){
-        return "/admin/login";
+        return "/Admin/login";
     }
 
 /////위에 코드는 임시로 js로그인 확인 절차 세션으로 부여할거 고민해야됨 loginVo,List<RankVo>이 두개를 세션에 담아 전달해야 완료
@@ -83,10 +83,24 @@ public class AdminController {
         return "admin/userCheck";
     }
 
+    /**
+     * 메인 페이지 테스트용 메서드
+     * @return
+     */
     @GetMapping("testHome")
     public String testHome() {
         System.out.println("testHome Function Entered");
-        return "Admin/adminhome";
+        return "/Admin/adminhome";
+    }
+
+    /**
+     * 어드민 사이드바 테스트
+     * @return
+     */
+    @GetMapping("testAdminSidebar")
+    public String testAdminSidebar() {
+        System.out.println("testAdminSidebar Function Entered");
+        return "/Admin/testAdminhome";
     }
 
 }
