@@ -62,9 +62,11 @@
         where recipte_no=#{recipte_no}
     </update>
 
-    <delete id="recipeDelete">
-        DELETE recipe where recipte_no=#{recipte_no}
-    </delete>
+    <update id="recipeDelete">
+        UPDATE recipe
+        set del_yn='y'
+        where recipte_no=#{recipte_no}
+    </update>
 
     <select id="recipeInquiry" resultMap="recipe">
         SELECT * FROM recipe

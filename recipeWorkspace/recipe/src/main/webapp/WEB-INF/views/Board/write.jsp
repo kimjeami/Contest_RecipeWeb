@@ -67,7 +67,7 @@
 
                      <div class="btn_add" style="padding:0 0 20px 350px; width:800px;">
                          <button type="button" onclick="addThings()">
-                             <span class="glyphicon glyphicon-plus-sign" id="add"></span> 추가
+                             <span class="glyphicon glyphicon-plus-sign" id="add">재료 추가</span>
                          </button>
                      </div>
 
@@ -80,7 +80,7 @@
 
                      <div class="btn_add2" style="padding:0 0 20px 350px; width:800px;">
                          <button type="button" onclick="addRecipe()">
-                             <span class="glyphicon glyphicon-plus-sign"></span> 추가
+                             <span class="glyphicon glyphicon-plus-sign">순서 추가</span>
                          </button>
                      </div>
 
@@ -88,8 +88,8 @@
                      <textarea rows="5" placeholder="내용을 입력하세요" name="tip" id="tip"></textarea>
                      <br/><br/>
 
-                     <div id="submit_css">
-                         <button type="button" onclick="RecipeCheck()">레시피 등록</button>
+                     <div class="submit_css">
+                         <button type="button" class="submit-btn" onclick="RecipeCheck()">레시피 등록</button>
                          &emsp; &emsp;&emsp; &emsp;
                          <button type="reset">취소</button>
                      </div>

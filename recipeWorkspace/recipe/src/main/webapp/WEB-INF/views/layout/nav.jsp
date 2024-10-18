@@ -7,8 +7,7 @@
         </div>
         <div class="nav__right">
             <form action="/recipe/list" method="get">
-                       <input type="text" class="nav__upper--search" placeholder="검색해주세요" name="keyword">
-                       <button type="submit">검색</>
+                   <input type="text" class="nav__upper--search" placeholder="검색해주세요" name="keyword">
             </form>
             <i>＋</i>
             <i>👤</i>

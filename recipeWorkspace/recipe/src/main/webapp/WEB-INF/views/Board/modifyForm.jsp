@@ -80,9 +80,9 @@
 
                      <br/><br/>
                        <div id="things_container">
-                           <c:set var="thingsNames" value="${fn:split(recipe.things_name, ',')}" />
-                           <c:set var="ea" value="${fn:split(recipe.ea, ',')}" />
-                           <c:set var="things_url" value="${fn:split(recipe.things_url, ',')}" />
+                           <c:set var="thingsNames" value="${fn:split(recipe.things_name, '-')}" />
+                           <c:set var="ea" value="${fn:split(recipe.ea, '-')}" />
+                           <c:set var="things_url" value="${fn:split(recipe.things_url, '-')}" />
                            <c:set var="length" value="${fn:length(thingsNames)}"/>
 
                           <c:forEach var="i" begin="0" end="${length - 1}">
@@ -102,8 +102,8 @@
 
                      레시피 순서
                     <div id="recipe-container">
-                        <c:set var="explanations" value="${recipe.explanation.split(',')}"/>
-                        <c:set var="imageFiles" value="${recipe.recipe_seq_img.split(',')}"/>
+                        <c:set var="explanations" value="${recipe.explanation.split('-')}"/>
+                        <c:set var="imageFiles" value="${recipe.recipe_seq_img.split('-')}"/>
 
                         <c:set var="length" value="${fn:length(explanations)}"/>
 

@@ -62,7 +62,7 @@ public class BoardServiceImpl implements BoardService{
             StringBuilder imagePaths = new StringBuilder();
             for (MultipartFile imgFile : recipeSeqImgs) {
                 String imgPath = bfs.saveFile2(imgFile);
-                imagePaths.append(imgPath).append(","); // 이미지 경로를 구분자로 결합
+                imagePaths.append(imgPath).append("-"); // 이미지 경로를 구분자로 결합
             }
             recipe.setRecipe_seq_img(imagePaths.toString()); // 경로를 문자열로 저장
         } else {
@@ -90,13 +90,13 @@ public class BoardServiceImpl implements BoardService{
         StringBuilder combinedIngredients3 = new StringBuilder();
 
         for (int i = 0; i < thingsNames.length; i++) {
-            combinedIngredients1.append(thingsNames[i]).append(",");
+            combinedIngredients1.append(thingsNames[i]).append("-");
         }
         for (int i = 0; i < eas.length; i++) {
-            combinedIngredients2.append(eas[i]).append(",");
+            combinedIngredients2.append(eas[i]).append("-");
         }
         for (int i = 0; i < thingsUrls.length; i++) {
-            combinedIngredients3.append(thingsUrls[i]).append(",");
+            combinedIngredients3.append(thingsUrls[i]).append("-");
         }
         recipe.setThings_name(combinedIngredients1.toString());
         recipe.setEa(combinedIngredients2.toString());
@@ -107,7 +107,7 @@ public class BoardServiceImpl implements BoardService{
 
         StringBuilder combinedSteps = new StringBuilder();
         for (int i = 0; i < explanations.length; i++) {
-            combinedSteps.append(explanations[i]).append(",");
+            combinedSteps.append(explanations[i]).append("-");
         }
         recipe.setExplanation(combinedSteps.toString());
 
@@ -220,13 +220,13 @@ public class BoardServiceImpl implements BoardService{
         StringBuilder combinedIngredients3 = new StringBuilder();
 
         for (int i = 0; i < thingsNames.length; i++) {
-            combinedIngredients1.append(thingsNames[i]).append(",");
+            combinedIngredients1.append(thingsNames[i]).append("-");
         }
         for (int i = 0; i < eas.length; i++) {
-            combinedIngredients2.append(eas[i]).append(",");
+            combinedIngredients2.append(eas[i]).append("-");
         }
         for (int i = 0; i < thingsUrls.length; i++) {
-            combinedIngredients3.append(thingsUrls[i]).append(",");
+            combinedIngredients3.append(thingsUrls[i]).append("-");
         }
         recipe.setThings_name(combinedIngredients1.toString());
         recipe.setEa(combinedIngredients2.toString());
@@ -237,7 +237,7 @@ public class BoardServiceImpl implements BoardService{
 
         StringBuilder combinedSteps = new StringBuilder();
         for (int i = 0; i < explanations.length; i++) {
-            combinedSteps.append(explanations[i]).append(",");
+            combinedSteps.append(explanations[i]).append("-");
         }
         recipe.setExplanation(combinedSteps.toString());
 
