@@ -8,6 +8,7 @@
         <title>목록 페이지 입니다.</title>
         <link rel="stylesheet" href="/css/board/boardlist.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <jsp:include page="/WEB-INF/views/layout/util.jsp" />
     </head>
     <body>
             <div class="container">

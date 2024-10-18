@@ -19,7 +19,7 @@ function addRecipe() {
     var newRow = document.createElement('div');
 
     newRow.innerHTML = `
-        <textarea rows="5" placeholder="내용을 입력하세요" name="explanation[]"></textarea>
+        <textarea rows="5" placeholder="내용을 입력하세요" name="explanation[]" id="explanation"></textarea>
         <input type="file" name="recipe_seq_img[]"/>
         <button type="button" onclick="removeElement(this)">삭제</button>
     `;

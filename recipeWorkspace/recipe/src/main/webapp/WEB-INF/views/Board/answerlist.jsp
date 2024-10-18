@@ -2,6 +2,21 @@
         pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+  <%
+      // 세션에서 로그인된 사용자 정보 확인
+      Object loginMember = session.getAttribute("loginMemberVo");
+
+      // 로그인 정보가 없을 경우
+      if (loginMember == null) {
+  %>
+          <script type="text/javascript">
+              alert("로그인을 해주세요.");
+              window.location.href = "/member/login";
+          </script>
+  <%
+          return;
+      }
+  %>
     <html>
     <head>
         <meta charset="UTF-8">

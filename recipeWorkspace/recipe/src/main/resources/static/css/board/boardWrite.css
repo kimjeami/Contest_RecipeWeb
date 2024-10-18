@@ -63,4 +63,11 @@
     cursor: pointer;
 }
 
+#explanation{
+    width:60%;
+}
+
+#tip {
+    width:60%;
+}
 
