@@ -20,15 +20,15 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>목록 페이지 입니다.</title>
-
+        <title>문의 리스트</title>
+     <link rel="stylesheet" href="/css/board/inquirylist.css">
+     <jsp:include page="/WEB-INF/views/layout/util.jsp" />
     </head>
     <body>
             <div class="container">
                 <jsp:include page="/WEB-INF/views/layout/nav.jsp" />
                 <main class="main">
-
-                <div class="container">
+               <div class="table_container">
                     <table border="1">
                      <tr>
                         <td>레시피 번호 </td>
@@ -45,20 +45,14 @@
                             </td>
                             <td>${recipe_inquiry.state}</td>
                           </tr>
-
                     </c:forEach>
+                 </div>
                     </table>
-
-                </div>
-
-                    <jsp:include page="/WEB-INF/views/Board/pagination.jsp" />
 
                    </div>
                 </main>
                 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
             </div>
-
-
 
 
     </body>

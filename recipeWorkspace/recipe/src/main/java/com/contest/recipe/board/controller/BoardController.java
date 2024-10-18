@@ -122,9 +122,11 @@ public class BoardController {
     @PostMapping("inquirysave")
     public String inquirysave(HttpServletRequest request){
 
+        int  write_no = Integer.parseInt(request.getParameter("write_no"));
+
        boardService.inquirysave(request);
 
-        return "redirect:/recipe/list";
+        return "redirect:/recipe/inquirylist?write_no="+write_no;
     }
 
     // 작성한 문의 리스트 가져오기
@@ -164,8 +166,8 @@ public class BoardController {
     // 답변 하기
     @PostMapping("answer")
     public  String answer(HttpServletRequest request) {
-
+        int  awnser_no = Integer.parseInt(request.getParameter("awnser_no"));
             boardService.answer(request);
-        return "Board/answer";
+        return "redirect:/recipe/answerlist?awnser_no="+awnser_no;
     }
 }

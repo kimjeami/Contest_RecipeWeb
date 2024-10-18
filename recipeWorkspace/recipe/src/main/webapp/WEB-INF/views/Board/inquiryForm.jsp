@@ -33,6 +33,8 @@
         <input type="hidden" value="${recipe.recipte_no}" id="recipte_no" name="recipte_no">
         <input type="hidden" value="${loginMemberVo.no}" id="write_no" name="write_no">
         <input type="hidden" value="${recipe.write_no}" id="awnser_no" name="awnser_no">
+        <input type="hidden" value="${loginMemberVo.nick}" id="write_nick" name="write_nick">
+        <input type="hidden" value="${recipe.write_name}" id="awnser_nick" name="awnser_nick">
         <h2>제목</h2>
         <input type="text" id="title" name="title">
         <h2>내용</h2>

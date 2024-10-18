@@ -13,7 +13,7 @@
             <!-- 처음 페이지 표시 여부 -->
             <c:if test="${page > 1}">
                 <li class="page-item">
-                    <a class="page-link" href="${url}?category=${category}?keyword=${keyword}" title="처음">
+                    <a class="page-link" href="${url}?category=${category}&keyword=${keyword}" title="처음">
                         <i class="fas fa-angle-double-left"></i>
                     </a>
                 </li>

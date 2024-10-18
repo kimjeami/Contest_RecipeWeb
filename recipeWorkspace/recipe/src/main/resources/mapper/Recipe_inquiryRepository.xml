@@ -4,8 +4,8 @@
 
 <mapper namespace="com.contest.recipe.board.repository.Recipe_inquiryRepository">
     <insert id="inquirysave">
-        insert into recipe_inquiry(no, recipte_no,write_no,awnser_no,title,content,enroll_date)
-        VALUES (SEQ_RECIPE_INQUIRY_NO.NEXTVAL,#{recipte_no},#{write_no},#{awnser_no},#{title},#{content},sysdate)
+        insert into recipe_inquiry(no, recipte_no,write_no,awnser_no,title,content,enroll_date,write_nick,awnser_nick)
+        VALUES (SEQ_RECIPE_INQUIRY_NO.NEXTVAL,#{recipte_no},#{write_no},#{awnser_no},#{title},#{content},sysdate,#{write_nick},#{awnser_nick})
     </insert>
 
     <resultMap type="com.contest.recipe.board.domain.Recipe_inquiry" id="recipe_inquiry">
@@ -20,6 +20,8 @@
         <id property="answer" column="answer"/>
         <id property="answer_date" column="answer_date"/>
         <id property="state" column="state"/>
+        <id property="write_nick" column="write_nick"/>
+        <id property="awnser_nick" column="awnser_nick"/>
     </resultMap>
 
     <select id="inquirylist" resultMap="recipe_inquiry">

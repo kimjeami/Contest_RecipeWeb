@@ -276,7 +276,8 @@ public class BoardServiceImpl implements BoardService{
         recipe_inquiry.setAwnser_no(Integer.parseInt(request.getParameter("awnser_no")));
         recipe_inquiry.setTitle(request.getParameter("title"));
         recipe_inquiry.setContent(request.getParameter("content"));
-
+        recipe_inquiry.setWrite_nick(request.getParameter("write_nick"));
+        recipe_inquiry.setAwnser_nick(request.getParameter("awnser_nick"));
         recipe_inquiryRepository.inquirysave(recipe_inquiry);
 
     }

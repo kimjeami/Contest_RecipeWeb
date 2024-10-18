@@ -30,8 +30,12 @@
     <div class="container">
         <jsp:include page="/WEB-INF/views/layout/nav.jsp" />
         <main class="main">
+
                <h2>레시피 문의</h2>
-              <div>
+              <div class="write_css">
+               <label>문의자</label>
+               ${recipe_inquiry.write_nick}
+               <br/><br/>
                <label>문의 제목</label>
                <input type="text" value="${recipe_inquiry.title}" id="title" name="title" readonly/>
                <br/><br/>
@@ -40,11 +44,13 @@
               </div>
 
 
-           <div>
+           <div class="awnser_css">
+               <label>답변자</label>
+               ${recipe_inquiry.awnser_nick}
                <label>답변 내용</label>
                <c:choose>
                    <c:when test="${recipe_inquiry.answer == null}">
-                       <input type="text" value="답변중입니다." readonly/>
+                       <input type="text" value="답변중입니다." readonly id="answer"/>
                    </c:when>
                    <c:otherwise>
                         <textarea rows="5" placeholder="내용을 입력하세요" name="content" id="content" readonly>${recipe_inquiry.answer}</textarea>
