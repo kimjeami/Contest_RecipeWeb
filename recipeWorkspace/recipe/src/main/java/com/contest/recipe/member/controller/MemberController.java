@@ -152,6 +152,18 @@ public class MemberController {
 
     }
 
+    //마이페이지
+    @GetMapping("mypage")
+    public String mypage(MemberVo vo, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+        if (loginMemberVo == null) {
+            return "redirect:/member/login";
+        }
+        return "member/mypage";
+
+    }
+
 
 
 }
