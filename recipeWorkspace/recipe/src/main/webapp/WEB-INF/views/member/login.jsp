@@ -1,23 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>헬로월드</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인홈</title>
+    <link rel="stylesheet" href="/css/member/login.css">
+    <jsp:include page="/WEB-INF/views/layout/util.jsp" />
 </head>
 <body>
-
-    <h1>멤버 로그인</h1>
-     <form action="/member/login" method="post">
-        <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
-        <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요">
-        <button type="submit">Login</button>
-    </form>
-    <c:if test="${not empty errMsg}">
-        <div class="error-message">${errMsg}</div>
-    </c:if>
+    <div class="container">
+        <jsp:include page="/WEB-INF/views/layout/nav-mini.jsp" />
+        <main class="main main-login">
+          <img src="/img/image.png" alt="logo">
+          <form action="/member/login" method="post" class="form form__login">
+            <input type="text" name="id" id="id" placeholder="아이디">
+            <input type="password" name="pwd" id="pwd" placeholder="비밀번호">
+            <div class="submit-btn form__login--submit-btn"><button type="submit">로그인</button></div>
+          </form>
+          <div class="login__links">
+            <a href="/member/find">아이디 · 비밀번호 찾기</a>
+            <span>|</span>
+            <a href="/member/join">회원가입</a>
+          </div>
+        </main>
+        <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+    </div>
 </body>
 </html>
