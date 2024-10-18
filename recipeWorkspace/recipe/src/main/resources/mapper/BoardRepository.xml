@@ -45,6 +45,9 @@
         SELECT r.*, ROW_NUMBER() OVER (ORDER BY recipte_no) AS rn
         FROM recipe r
         WHERE LOWER(title) LIKE '%' || LOWER(#{keyword}) || '%'
+        <if test ="category != 0">
+            AND LOWER(recipe_cate_no) LIKE '%' || LOWER(#{category}) || '%'
+        </if>
         AND r.state != 3
         )
 

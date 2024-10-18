@@ -117,7 +117,7 @@ public class BoardServiceImpl implements BoardService{
 
     // 레시피 목록 가져오기
     @Override
-    public void recipeList(Model model,String keyword, Integer page) {
+    public void recipeList(Model model,Integer category,String keyword, Integer page) {
         if (page == null) page = 1;   // 디폴트 1 page
         if (page < 1) page = 1;
 
@@ -136,8 +136,8 @@ public class BoardServiceImpl implements BoardService{
 
         List<Recipe> list;
 
-        cnt = boardRepository.countRecipe(keyword);
-        list = boardRepository.recipeList(keyword,(page - 1) * pageRows, pageRows);
+        cnt = boardRepository.countRecipe(category,keyword);
+        list = boardRepository.recipeList(category,keyword,(page - 1) * pageRows, pageRows);
 
         totalPage = (int) Math.ceil(cnt / (double) pageRows);
         startPage = (((page - 1) / writePages) * writePages) + 1;

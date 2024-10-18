@@ -12,7 +12,7 @@ public interface BoardService {
     public void write(MultipartHttpServletRequest mul, HttpServletResponse response,
                        HttpServletRequest request);
     // 레시피 가져오기
-    public void recipeList(Model model,String keyword, Integer page);
+    public void recipeList(Model model,Integer category,String keyword, Integer page);
 
     // 레시피 상세보기
     public void recipeDetail(int recipte_no, Model model);

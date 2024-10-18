@@ -13,9 +13,9 @@ public interface BoardRepository {
 
 
 
-    public  int countRecipe(String keyword);
+    public  int countRecipe(int category,String keyword);
 
-    public List<Recipe> recipeList(String keyword,int from, int rows);
+    public List<Recipe> recipeList(int category,String keyword,int from, int rows);
 
 
 

@@ -48,9 +48,13 @@ public class BoardController {
 
     // 목록 페이지
     @GetMapping("list")
-    public  String list(Model model,@RequestParam(required = false) String keyword, Integer page) {
+    public  String list(Model model,@RequestParam(required = false)Integer category,@RequestParam(required = false) String keyword,Integer page) {
 
-        boardService.recipeList(model,keyword,page);
+        if(category == null) {
+            category = 0;
+        }
+
+        boardService.recipeList(model,category,keyword,page);
 
 
         return "Board/list";

@@ -8,7 +8,7 @@
         <div class="nav__right">
             <form action="/recipe/list" method="get">
                 <select name="category" class="nav__upper--category">
-                    <option value="all">전체</option>
+                    <option value="">전체</option>
                     <option value="1">요리</option>
                     <option value="2">가구</option>
                     <option value="3">컴퓨터</option>
