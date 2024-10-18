@@ -93,3 +93,18 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
+
+
+
+
+
+.nav__right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 검색창과 아이콘 간 간격 조정 */
+    margin-right: 10px;
+}
+
+.nav__right i {
+    margin-left: 10px; /* 검색창과 아이콘 사이에 여백 추가 */
+}
