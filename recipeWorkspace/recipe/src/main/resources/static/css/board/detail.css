@@ -1,0 +1,91 @@
+/* 페이지 전체를 가운데 정렬 */
+.container {
+
+    margin: 0 auto;
+    padding: 20px;
+}
+.things_url_css{
+    text-align:center;
+}
+
+.center_css{
+    text-align:center;
+}
+
+
+/* 메인 컨텐츠 중앙 정렬 */
+.main {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 인분, 시간, 난이도 정렬 */
+.recipe_information {
+    padding-left: 30px; /* 오른쪽으로 3칸 정도 이동 */
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe_information_font{
+
+    font-size:20px;
+}
+
+/* 재료 정보 스타일 */
+.ingredient_information {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 재료 리스트 */
+.ingredient_information a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.ingredient_information a:hover {
+    text-decoration: underline;
+}
+
+/* 레시피 순서 이미지 */
+.recipe_steps img {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 레시피 순서 스타일 */
+.recipe_steps {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size:20px;
+}
+
+/* 레시피 팁 스타일 */
+.recipe_tip {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+
+
+.submit_css button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
