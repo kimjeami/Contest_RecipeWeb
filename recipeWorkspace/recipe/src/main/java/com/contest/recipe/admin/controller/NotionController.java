@@ -24,7 +24,7 @@ public class NotionController {
 
     @GetMapping("notionList")
     public String notionList(){
-        return "/Admin/notionList";
+        return "admin/notionList";
     }
 
 
