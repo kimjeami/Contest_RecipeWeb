@@ -1,3 +1,10 @@
+body{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: darkgray;
+}
+
 #mainTable{
     border: 1px solid black;
     width: 1000px;
@@ -7,12 +14,6 @@
     border: 1px solid black;
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background-color: darkgray;
-}
 
 #divMain{
     border: 1px solid black;
@@ -20,8 +21,8 @@ body{
     height: 1000px;
     background-color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 #divTitle{
     text-align: left;
@@ -31,5 +32,13 @@ body{
 #mainTable > tbody > tr:hover{
     background-color: darkgray;
     box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+}
+nav{
+    width: 1200px;
+    top: 0;
+    background-color: black;
+    overflow: auto;
+    text-align: center;
+    color : white;
 }
 

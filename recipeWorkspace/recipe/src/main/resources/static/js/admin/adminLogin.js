@@ -11,7 +11,7 @@ function smt(){
         success : function(x){
             alert("로그인 완료!");
             console.log(x);
-            location.href='/admin/home';         
+            location.href='/admin/sessionHome';         
         },
         error : function(x){
             console.log("에러");
