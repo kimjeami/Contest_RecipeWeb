@@ -14,6 +14,7 @@
         <jsp:include page="/WEB-INF/views/layout/nav.jsp" />
         <main class="main">
            ${loginMemberVo}
+           ${userCountVo}
         </main>
         <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
     </div>

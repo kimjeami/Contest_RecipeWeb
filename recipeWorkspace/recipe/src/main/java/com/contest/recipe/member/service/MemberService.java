@@ -2,6 +2,7 @@ package com.contest.recipe.member.service;
 
 import com.contest.recipe.member.dao.MemberDao;
 import com.contest.recipe.member.vo.MemberVo;
+import com.contest.recipe.member.vo.userCountVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,9 @@ public class MemberService {
 
     public List<MemberVo> list() {
         return dao.list();
+    }
+
+    public userCountVo count(String no) {
+        return dao.count(no);
     }
 }
