@@ -4,11 +4,9 @@ import com.contest.recipe.admin.service.NotionService;
 import com.contest.recipe.admin.vo.notionVo;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,18 @@ public class NotionController {
     @GetMapping("notionData")
     public List<notionVo> notionData(notionVo vo){
         return service.notionData(vo);
+    }
+
+
+    @GetMapping("notionInsert")
+    public String notionInsert(){
+        return "admin/notionInsert";
+    }
+
+    @ResponseBody
+    @PostMapping("notionInsert")
+    public int notionInsert(notionVo vo){
+        return service.notionInsert(vo);
     }
 
     @GetMapping("notionList")
@@ -59,4 +69,18 @@ public class NotionController {
         }
         return "admin/notionList";
     }
+
+    @ResponseBody
+    @PostMapping("notionTemporaryDelete")
+    public int notionTemporaryDelete(notionVo vo){
+        return  service.notionTemporaryDelete(vo);
+
+    }
+
+    @DeleteMapping("notionDel")
+    @ResponseBody
+    public int notionDel(notionVo vo){
+        return service.notionDel(vo);
+    }
+
 }

@@ -35,8 +35,9 @@ $(document).ready(()=>{
                 enrollDate.innerHTML = str3;
 
                 str4 += "<button id='mBtn' data-id='"+detailData.no+"'>" + "수정하기";
-                str4 += "</button>"
+                str4 += "</button>";
                 mBtn.innerHTML = str4;
+
 
                 document.querySelectorAll("#mBtn").forEach((mBtn)=>{
                     mBtn.addEventListener("click",()=>{

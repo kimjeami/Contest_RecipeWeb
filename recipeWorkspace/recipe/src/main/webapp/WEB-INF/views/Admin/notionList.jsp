@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>헬로월드</title>
 <script defer src="/js/admin/notionList.js"></script>
+<script defer src="/js/admin/notionDel.js"></script>
 <link rel="stylesheet" href="/css/admin/notionList.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -20,6 +21,7 @@
                 <td>조회수</td>
                 <td>등록일</td>
                 <td>삭제 여부</td>
+                <td>폐기</td>
             </tr>
         </thead>
         <tbody id="notionList">
