@@ -16,6 +16,7 @@ $.ajax({
             str += "<td>" + x[i].hit + "</td>";
             str += "<td>" + x[i].enrollDate + "</td>";
             str += "<td>" + x[i].delYn + "</td>";
+            str += `<td><button onclick=del(${x[i].no})>삭제</button></td>`;
             str += "</tr>";
         }
         tbodyVal.innerHTML = str;

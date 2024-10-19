@@ -24,4 +24,16 @@ public class NotionService {
     public int notionModify(notionVo vo) {
         return dao.notionModify(vo);
     }
+
+    public int notionTemporaryDelete(notionVo vo) {
+        return dao.notionTemporaryDelete(vo);
+    }
+
+    public int notionDel(notionVo vo) {
+        return dao.notionDel(vo);
+    }
+
+    public int notionInsert(notionVo vo) {
+        return dao.notionInsert(vo);
+    }
 }

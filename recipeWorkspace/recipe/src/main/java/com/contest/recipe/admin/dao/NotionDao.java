@@ -25,4 +25,16 @@ public class NotionDao {
     public int notionModify(notionVo vo) {
         return mapper.notionModify(vo);
     }
+
+    public int notionTemporaryDelete(notionVo vo) {
+        return mapper.notionTemporaryDelete(vo);
+    }
+
+    public int notionDel(notionVo vo) {
+        return mapper.notionDel(vo);
+    }
+
+    public int notionInsert(notionVo vo) {
+        return mapper.notionInsert(vo);
+    }
 }

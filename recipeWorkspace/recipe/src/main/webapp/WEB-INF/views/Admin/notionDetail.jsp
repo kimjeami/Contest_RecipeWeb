@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>헬로월드</title>
 <script defer src="/js/admin/notionDetail.js"></script>
+<script defer src="/js/admin/notionTemporaryDel.js"></script>
 <link rel="stylesheet" href="/css/admin/notionDetail.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -22,6 +23,9 @@
         <br>
         <div id="modifyButton">
             
+        </div><br><br>
+        <div id="delButton">
+            <button id="delBtn" onclick="tempDel();">임시삭제</button>
         </div>
     </div>
 </body>
