@@ -1,3 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+
+
 #modifyForm{
     font-size:20px;
 
@@ -55,11 +65,18 @@
     cursor: pointer;
 }
 
-#explanation{
-    width:60%;
+
+
+
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-#tip {
-    width:60%;
+textarea {
+    resize: none;
 }
-

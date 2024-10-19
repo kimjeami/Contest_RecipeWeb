@@ -95,54 +95,63 @@
 
                      재료들
                      <br/><br/>
-                     <div id="things_css">
+                    <div id="things_css">
+                        <div id="things_container"> <!-- 이 부분을 반복문 밖으로 이동 -->
+                            이름 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&nbsp;&nbsp; 수량 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;링크
+                            <br/><br/>
 
-                     이름 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&nbsp;&nbsp; 수량 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&nbsp;&nbsp;링크
+                            <c:set var="thingsNames" value="${fn:split(recipe.things_name, '-')}" />
+                            <c:set var="ea" value="${fn:split(recipe.ea, '-')}" />
+                            <c:set var="things_url" value="${fn:split(recipe.things_url, '-')}" />
+                            <c:set var="length" value="${fn:length(thingsNames)}"/>
 
-                     <br/><br/>
-                       <div id="things_container">
-                           <c:set var="thingsNames" value="${fn:split(recipe.things_name, '-')}" />
-                           <c:set var="ea" value="${fn:split(recipe.ea, '-')}" />
-                           <c:set var="things_url" value="${fn:split(recipe.things_url, '-')}" />
-                           <c:set var="length" value="${fn:length(thingsNames)}"/>
+                            <c:forEach var="i" begin="0" end="${length - 1}">
+                                <div>
+                                    <label><input type="text" name="things_name[]" value="${thingsNames[i].trim()}"/></label>
+                                    <label><input type="text" name="ea[]" value="${ea[i].trim()}"/></label>
+                                    <label><input type="text" name="things_url[]" value="${things_url[i].trim()}"/></label>
+                                    <button type="button" onclick="removeElement(this)">삭제</button>
+                                    <br/>
+                                </div>
+                            </c:forEach>
+                        </div>
+                        <br/><br/>
 
-                          <c:forEach var="i" begin="0" end="${length - 1}">
-                               <label><input type="text" name="things_name[]" id="things_name[]" value="${thingsNames[i].trim()}"/></label>
-                               <label><input type="text" name="ea[]" id="ea[]" value="${ea[i].trim()}"/></label>
-                               <label><input type="text" name="things_url[]" id="things_url[]" value="${things_url[i].trim()}"/></label>
-                                <br/>
-                           </c:forEach>
-                       </div>
-                     <br/><br/>
+                        <div class="btn_add" style="padding:0 0 20px 350px; width:800px;">
+                            <button type="button" onclick="addThings()">
+                                <span class="glyphicon glyphicon-plus-sign" id="add"></span> 추가
+                            </button>
+                        </div>
+                    </div>
 
-                     <div class="btn_add" style="padding:0 0 20px 350px; width:800px;">
-                         <button type="button" onclick="addThings()">
-                             <span class="glyphicon glyphicon-plus-sign" id="add"></span> 추가
-                         </button>
-                     </div>
 
                      레시피 순서
-                    <div id="recipe-container">
-                        <c:set var="explanations" value="${recipe.explanation.split('-')}"/>
-                        <c:set var="imageFiles" value="${recipe.recipe_seq_img.split('-')}"/>
-                        <c:set var="length" value="${fn:length(explanations)}"/>
 
-                    <c:forEach var="i" begin="0" end="${length - 1}">
-                        <textarea rows="5" name="explanation[]" id="explanation">${explanations[i].trim()}</textarea>
-                        <input type="file" name="recipe_seq_img[]" id="recipe_seq_img[]" onchange="readURL(this, 'preview_${i}')"/>
-                        <input type="hidden" name="existingRecipeSeqImg" value="${imageFiles[i].trim()}">
-                        <img src="/images/${imageFiles[i].trim()}" id="preview_${i}" width="200px" height="200px" data-default="/images/${imageFiles[i].trim()}"><br>
-                        <br/><br/>
-                    </c:forEach>
+                      <div id="recipe_container">
+                          <c:set var="explanations" value="${recipe.explanation.split('-')}"/>
+                          <c:set var="imageFiles" value="${recipe.recipe_seq_img.split('-')}"/>
+                          <c:set var="length" value="${fn:length(explanations)}"/>
 
-                    </div>
-                     <br/><br/>
+                          <c:forEach var="i" begin="0" end="${length - 1}">
+                              <div class="recipe_step">
+                                  <textarea rows="5" name="explanation[]" id="explanation">${explanations[i].trim()}</textarea>
+                                  <input type="file" name="recipe_seq_img[]" id="recipe_seq_img[]" onchange="readURL(this, 'preview_${i}')"/>
+                                  <input type="hidden" name="existingRecipeSeqImg" value="${imageFiles[i].trim()}">
+                                  <img src="/images/${imageFiles[i].trim()}" id="preview_${i}" width="200px" height="200px" data-default="/images/${imageFiles[i].trim()}"><br>
+                                  <button type="button" onclick="removeElement(this)">삭제</button>
+                                  <br/><br/>
+                              </div>
+                          </c:forEach>
+                      </div>
 
-                     <div class="btn_add2" style="padding:0 0 20px 350px; width:800px;">
-                         <button type="button" onclick="addRecipe()">
-                             <span class="glyphicon glyphicon-plus-sign"></span> 추가
-                         </button>
-                     </div>
+                      <br/><br/>
+
+                      <div class="btn_add2" style="padding:0 0 20px 350px; width:800px;">
+                          <button type="button" onclick="addRecipe()">
+                              <span class="glyphicon glyphicon-plus-sign"></span> 추가
+                          </button>
+                      </div>
+
 
                      레시피 팁
                      <textarea rows="5" placeholder="내용을 입력하세요" name="tip" id="tip">${recipe.tip}</textarea>

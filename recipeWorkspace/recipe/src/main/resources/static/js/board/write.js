@@ -19,7 +19,7 @@ function addRecipe() {
     var newRow = document.createElement('div');
 
     newRow.innerHTML = `
-        <textarea rows="5" placeholder="내용을 입력하세요" name="explanation[]"></textarea>
+        <textarea rows="5" placeholder="내용을 입력하세요" name="explanation[]" ></textarea>
         <input type="file" name="recipe_seq_img[]"/>
         <button type="button" onclick="removeElement(this)">삭제</button>
     `;
@@ -62,7 +62,7 @@ function RecipeCheck() {
        else if(document.boardWriteForm.explanation.value=="") {
                         alert("레시피순서에 내용은 필수 입력입니다.");
                         document.boardWriteForm.explanation.focus();
-              }
+          }
 
 
 

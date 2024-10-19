@@ -31,10 +31,6 @@
     margin: 0;
 }
 
-.recipe-item img {
-    width: 100%;
-    height: auto;
-}
 
  .pagination-container {
               text-align:center;  /* 가운데 정렬 */
