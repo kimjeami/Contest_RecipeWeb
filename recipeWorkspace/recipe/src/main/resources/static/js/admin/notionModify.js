@@ -1,10 +1,11 @@
-function getParam(param){
-    const url = new URLSearchParams(location.search);
+function getNo(param){
+    const url = new URLSearchParams(window.location.search);
     return url.get(param);
 }
 
+
 $(document).ready(()=>{
-    const no = getParam("no");
+    const no = getNo("no");
     if(no){
         $.ajax({
             url : '/admin/notionDetailData',
@@ -17,12 +18,10 @@ $(document).ready(()=>{
                 const title = document.querySelector(".title");
                 const content = document.querySelector("#notionContent");
                 const enrollDate = document.querySelector(".enrollDate");
-                const mBtn = document.querySelector("#modifyButton")
 
                 let str1 = "";
                 let str2 = "";
                 let str3 = "";
-                let str4 = "";
 
                 str1 += "제목 : " + detailData.title;
                 title.innerHTML = str1;
@@ -33,19 +32,43 @@ $(document).ready(()=>{
                 str3 +=  "등록일 : "
                 str3 += detailData.enrollDate;
                 enrollDate.innerHTML = str3;
-
-                str4 += "<button id='mBtn' data-id='"+detailData.no+"'>" + "수정하기";
-                str4 += "</button>"
-                mBtn.innerHTML = str4;
-
-                document.querySelectorAll("#mBtn").forEach((mBtn)=>{
-                    mBtn.addEventListener("click",()=>{
-                        const dataNo = mBtn.getAttribute("data-id");
-                        location.href="/admin/notionModify?no="+dataNo;
-                    });
-                });
                 
             }
         })
     }
+  
+    
 })
+
+
+
+
+
+
+function modifyBtn(){
+    const title = document.querySelector(".title").value;
+    const content = document.querySelector("#notionContent").value;
+
+        const no = getNo("no");
+        if(no){
+            $.ajax({
+                url : "/admin/notionModify",
+                method : "POST",
+                data : {
+                    no : no,
+                    title : title,
+                    content : content
+                },
+                success : function(data){
+                    alert("수정완료");
+                    location.href='/admin/notionList';
+                },
+                error : function(x){
+                    console.log("에러",x);
+                    
+                }
+        
+            });
+        }
+
+}

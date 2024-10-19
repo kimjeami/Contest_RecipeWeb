@@ -20,4 +20,8 @@ public class NotionService {
     public notionVo notionDetailData(notionVo vo) {
         return dao.notionDetailData(vo);
     }
+
+    public int notionModify(notionVo vo) {
+        return dao.notionModify(vo);
+    }
 }
