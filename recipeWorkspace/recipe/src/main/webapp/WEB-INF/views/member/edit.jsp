@@ -1,49 +1,101 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html lang="ko">
 
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>회원가입</title>
+    <title>회원 정보 수정</title>
+    <link rel="stylesheet" href="/css/member/edit.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="/js/member/edit.js"></script>
+    <jsp:include page="/WEB-INF/views/layout/util.jsp" />
+</head>
 
-      <!-- 다음 주소 api -->
-      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
-      <script defer src="/js/member/join.js"></script>
+<body>
+    <div class="container">
+        <jsp:include page="/WEB-INF/views/layout/nav-back.jsp" />
+        <main class="main main-join">
+            <h1>회원 정보 수정</h1>
+            <div class="edit-form">
+                <form action="/member/edit" method="post" class="form form__edit">
+                    <div class="input-container">
+                        <div class="form-group">
+                            <label for="nick">닉네임</label>
+                            <input type="text" name="nick" id="nick" value="${loginMemberVo.nick}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">이메일</label>
+                            <input type="email" name="email" id="email" value="${loginMemberVo.email}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="birth">생년월일</label>
+                            <input type="text" name="birth" id="birth" value="${loginMemberVo.birth}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">전화번호</label>
+                            <input type="tel" name="phone" id="phone" value="${loginMemberVo.phone}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postcode">우편번호</label>
+                            <input type="text" name="postcode" id="postcode" value="${loginMemberVo.postcode}">
+                            <button type="button" onclick="execDaumPostcode()">우편번호 검색</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">주소</label>
+                            <input type="text" name="address" id="address" value="${loginMemberVo.address}">
+                        </div>
+                        <div class="form-group">
+                            <label for="addressDetail">상세주소</label>
+                            <input type="text" name="addressDetail" id="addressDetail" value="${loginMemberVo.addressDetail}">
+                        </div>
+                        <div class="form-group">
+                            <label for="addressExtra">참고주소</label>
+                            <input type="text" name="addressExtra" id="addressExtra" value="${loginMemberVo.addressExtra}">
+                        </div>
+                    </div>
 
+                    <div class="change-password">
+                        <button type="button" id="changePasswordBtn">비밀번호 변경</button>
+                    </div>
 
-  </head>
+                    <div class="submit-btn">
+                        <button type="submit">정보 수정</button>
+                    </div>
+                </form>
 
-  <body>
-      <form action="/member/edit" method="post" class="form form__edit">
+                <div class="withdraw-btn">
+                    <button onclick="location.href='/member/delete'">회원 탈퇴</button>
+                </div>
+            </div>
 
-        <input type="text" name="id" id="id" placeholder="아이디" value="${loginMemberVo.id}" readonly>
-        <br>
-        <input type="password" name="pwd" id="pwd" placeholder="비밀번호" value="${loginMemberVo.pwd}" required>
-        <br>
-        <input type="email" name="email" id="email" placeholder="이메일" value="${loginMemberVo.email}" required>
-        <br>
-        <input type="text" name="nick" id="nick" placeholder="이름" value="${loginMemberVo.nick}" required>
-        <br>
-        <input type="text" name="birth" id="birth" placeholder="생년월일" value="${loginMemberVo.birth}" required>
-        <br>
-        <input type="tel" name="phone" id="phone" placeholder="전화번호" minlength="8" maxlength="11"
-         value="${loginMemberVo.phone}" required>
-        <br>
-        <input type="text" name="postcode" id="postcode" placeholder="우편번호" value="${loginMemberVo.postcode}" required>
-        <button type="button" class="" onclick="execDaumPostcode()">우편번호
-          검색</button>
-        <br>
-        <input type="text" name="address" id="address" placeholder="주소" value="${loginMemberVo.address}" required>
-        <br>
-        <input type="text" name="addressDetail" id="address2" placeholder="상세주소" value="${loginMemberVo.addressDetail}" required>
-        <br>
-        <input type="text" name="addressExtra" id="extraAddress" placeholder="참고주소" value="${loginMemberVo.addressExtra}" required>
-        <br>
-        <div class="submit-btn form__join--submit-btn">
-          <button type="submit">수정하기</button>
-        </div>
-      </form>
+            <div id="passwordModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>비밀번호 변경</h2>
+                    <form id="changePasswordForm">
+                        <br>
+                        <label for="currentPwd">현재 비밀번호</label>
+                        <input type="password" name="currentPwd" id="currentPwd" required>
+                        <br>
+                        <br>
 
-  </body>
+                        <label for="newPwd">새&nbsp; 비밀번호</label> &nbsp;
+                        <input type="password" name="newPwd" id="newPwd" required>
+                        <br>
+                        <br>
 
-  </html>
+                        <label for="confirmNewPwd">비밀번호 확인</label>
+                        <input type="password" name="confirmNewPwd" id="confirmNewPwd" required>
+                        <br>
+                        <br>
+
+                        <button type="submit">변경하기</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+    </div>
+</body>
+
+</html>

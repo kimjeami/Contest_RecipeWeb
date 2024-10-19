@@ -1,0 +1,22 @@
+#deleteButton,
+#deleteMemberBtn{
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    background-color: #b0b0b0;
+    color: white;
+    transition: background 0.3s;
+    margin-bottom:10px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    background-color: #b0b0b0;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#deleteButton:hover,
+#deleteMemberBtn:hover{
+    background-color: #a0a0a0;
+}
