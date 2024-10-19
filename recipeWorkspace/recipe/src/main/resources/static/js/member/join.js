@@ -38,3 +38,56 @@ function execDaumPostcode() {
   }).open();
 }
 
+
+
+
+let isIdChecked = false;
+let isPasswordConfirmed = false;
+
+document.getElementById('checkIdBtn').addEventListener('click', function() {
+    const id = document.getElementById('id').value;
+
+    $.ajax({
+        url: '/member/checkId',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ id: id }),
+        success: function(response) {
+            if (response.isAvailable) {
+                alert('사용 가능한 아이디입니다.');
+                isIdChecked = true;
+            } else {
+                alert('사용 중인 아이디 입니다.');
+                isIdChecked = false;
+            }
+        },
+        error: function() {
+            alert('아이디 중복 체크 실패...');
+        }
+    });
+});
+
+document.getElementById('checkPwdBtn').addEventListener('click', function() {
+    const pwd = document.getElementById('pwd').value;
+    const confirmPwd = document.getElementById('confirmPwd').value;
+
+    if (pwd === confirmPwd) {
+        alert('비밀번호가 일치합니다.');
+        isPasswordConfirmed = true;
+    } else {
+        alert('비밀번호가 일치하지 않습니다.');
+        isPasswordConfirmed = false;
+    }
+});
+
+
+document.querySelector('.form__join').addEventListener('submit', function(event) {
+    if (!isIdChecked) {
+        alert('아이디 중복 체크를 해주세요.');
+        event.preventDefault();
+    }
+    if (!isPasswordConfirmed) {
+        alert('비밀번호를 확인해주세요.');
+        event.preventDefault();
+    }
+});
