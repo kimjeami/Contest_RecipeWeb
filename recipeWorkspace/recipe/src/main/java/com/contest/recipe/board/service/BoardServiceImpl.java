@@ -181,24 +181,34 @@ public class BoardServiceImpl implements BoardService{
 
         // 이미지 파일 처리
         MultipartFile file1 = mul.getFile("thumbnal");
-        List<MultipartFile> recipeSeqImgs = mul.getFiles("recipe_seq_img[]");
+        String existingThumbnail = mul.getParameter("existingThumbnail"); // 기존 썸네일 경로 받기
         if (file1 != null && !file1.isEmpty()) {
-            recipe.setThumbnail(bfs.saveFile1(file1));
+            recipe.setThumbnail(bfs.saveFile1(file1)); // 새로운 파일이 있으면 저장
         } else {
-            recipe.setThumbnail("nan"); // 기본값 설정
+            recipe.setThumbnail(existingThumbnail); // 없으면 기존 썸네일 유지
         }
 
         // 여러 이미지 저장 처리
+        List<MultipartFile> recipeSeqImgs = mul.getFiles("recipe_seq_img[]");
+        String[] existingRecipeSeqImgs = mul.getParameterValues("existingRecipeSeqImg"); // 기존 이미지 경로 받기
+        StringBuilder imagePaths = new StringBuilder();
+
         if (recipeSeqImgs != null && !recipeSeqImgs.isEmpty()) {
-            StringBuilder imagePaths = new StringBuilder();
+            // 새로운 이미지가 있으면 저장
             for (MultipartFile imgFile : recipeSeqImgs) {
-                String imgPath = bfs.saveFile2(imgFile);
-                imagePaths.append(imgPath).append(","); // 이미지 경로를 구분자로 결합
+                if (!imgFile.isEmpty()) {
+                    String imgPath = bfs.saveFile2(imgFile);
+                    imagePaths.append(imgPath).append("-");
+                }
             }
-            recipe.setRecipe_seq_img(imagePaths.toString()); // 경로를 문자열로 저장
-        } else {
-            recipe.setRecipe_seq_img("nan"); // 기본값 설정
         }
+        // 새로운 이미지가 없으면 기존 이미지 사용
+        if (imagePaths.length() == 0 && existingRecipeSeqImgs != null) {
+            for (String img : existingRecipeSeqImgs) {
+                imagePaths.append(img).append("-");
+            }
+        }
+        recipe.setRecipe_seq_img(imagePaths.toString());
 
         // 레시피 변경된 정보 저장
         recipe.setRecipte_no(Integer.parseInt(mul.getParameter("recipte_no")));
@@ -210,6 +220,7 @@ public class BoardServiceImpl implements BoardService{
         recipe.setStep(mul.getParameter("step"));
         recipe.setTip(mul.getParameter("tip"));
         recipe.setState(Integer.parseInt(mul.getParameter("state")));
+
         // 재료 정보 처리
         String[] thingsNames = mul.getParameterValues("things_name[]");
         String[] eas = mul.getParameterValues("ea[]");
@@ -234,7 +245,6 @@ public class BoardServiceImpl implements BoardService{
 
         // 요리 순서 처리
         String[] explanations = mul.getParameterValues("explanation[]");
-
         StringBuilder combinedSteps = new StringBuilder();
         for (int i = 0; i < explanations.length; i++) {
             combinedSteps.append(explanations[i]).append("-");
@@ -244,6 +254,7 @@ public class BoardServiceImpl implements BoardService{
         // 레시피 수정
         boardRepository.modify(recipe);
     }
+
 
     // 레시피 삭제
 

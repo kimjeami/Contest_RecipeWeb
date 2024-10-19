@@ -29,12 +29,16 @@
 <script type="text/javascript">
 	function readURL(input, previewId) {
 		var file = input.files[0];
-		if(file != null) {
+		if (file != null) {
 			var reader = new FileReader();
-			reader.readAsDataURL(file); // 파일 정보 읽어오기
-			reader.onload = function(e) { // 읽기에 성공하면 결과 표시
-				$("#" + previewId).attr("src", e.target.result); // src 속성을 파일의 URL로 설정
-			}
+			reader.readAsDataURL(file);
+			reader.onload = function (e) {
+				$("#" + previewId).attr("src", e.target.result);
+			};
+		} else {
+			// 파일이 선택되지 않은 경우 기본 이미지를 유지
+			var defaultSrc = $("#" + previewId).data('default');
+			$("#" + previewId).attr("src", defaultSrc);
 		}
 	}
 </script>
@@ -62,6 +66,7 @@
 
                    <div id="thumbnal_css">
                       <input type="file" id="thumbnal" name="thumbnal" onchange="readURL(this, 'preview')"/>
+                       <input type="hidden" name="existingThumbnail" value="${recipe.thumbnail}">
                      <img src="/images/${recipe.thumbnail}" id="preview" width="200px" height="200px" alt="선택된 이미지가 없습니다." data-default="/images/${recipe.thumbnail}">
                      <br/><br/>
                      썸네일
@@ -120,12 +125,12 @@
                     <div id="recipe-container">
                         <c:set var="explanations" value="${recipe.explanation.split('-')}"/>
                         <c:set var="imageFiles" value="${recipe.recipe_seq_img.split('-')}"/>
-
                         <c:set var="length" value="${fn:length(explanations)}"/>
 
                     <c:forEach var="i" begin="0" end="${length - 1}">
                         <textarea rows="5" name="explanation[]" id="explanation">${explanations[i].trim()}</textarea>
                         <input type="file" name="recipe_seq_img[]" id="recipe_seq_img[]" onchange="readURL(this, 'preview_${i}')"/>
+                        <input type="hidden" name="existingRecipeSeqImg" value="${imageFiles[i].trim()}">
                         <img src="/images/${imageFiles[i].trim()}" id="preview_${i}" width="200px" height="200px" data-default="/images/${imageFiles[i].trim()}"><br>
                         <br/><br/>
                     </c:forEach>
@@ -149,8 +154,10 @@
                          <button type="reset">취소</button>
                      </div>
                          <select id="state" name="state">
+                              <option value="2" ${recipe.state == 0 ? 'selected' : ''}>무료</option>
                               <option value="0" ${recipe.state == 0 ? 'selected' : ''}>판매중</option>
-                               <option value="1" ${recipe.state == 1 ? 'selected' : ''}>판매완료</option>
+                              <option value="1" ${recipe.state == 1 ? 'selected' : ''}>판매완료</option>
+
                        </select>
                     </div>
 
