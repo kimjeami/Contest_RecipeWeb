@@ -10,11 +10,25 @@
 </head>
 <body>
     <div class="container">
+        <jsp:include page="/WEB-INF/views/layout/nav-back.jsp" />
         <main class="main main-settings">
           <div class="settings__upper">
+            <img src="/img/profile/${loginMemberVo.profile}" alt="logo">
             <span class="settings__name">${loginMemberVo.nick}님, 환영합니다.</span>
             <span class="settings__email">${loginMemberVo.id}</span>
             <span class="settings__phone">${loginMemberVo.email}</span>
+            <table class="my_count">
+                <tr>
+                    <th>팔로잉</th>
+                    <th>팔로워</th>
+                    <th>게시글</th>
+                </tr>
+                <tr>
+                    <td>${userCountVo.followingCount}</td>
+                    <td>${userCountVo.followerCount}</td>
+                    <td>${userCountVo.recipeCount}</td>
+                </tr>
+            </table>
           </div>
           <div class="settings__lower">
             <a href="/member/edit" class="settings__link">내 정보 수정</a>

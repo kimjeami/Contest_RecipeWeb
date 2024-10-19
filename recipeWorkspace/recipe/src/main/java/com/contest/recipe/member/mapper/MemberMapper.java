@@ -1,6 +1,7 @@
 package com.contest.recipe.member.mapper;
 
 import com.contest.recipe.member.vo.MemberVo;
+import com.contest.recipe.member.vo.userCountVo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -29,4 +30,11 @@ public interface MemberMapper {
 
     @Select("SELECT * FROM MEMBER")
     List<MemberVo> list();
+
+    @Select("SELECT \n" +
+            "    (SELECT COUNT(*) FROM FREIND WHERE FOLLOWER = #{no}) AS FOLLOWER_COUNT,\n" +
+            "    (SELECT COUNT(*) FROM FREIND WHERE FOLLOWING = #{no}) AS FOLLOWING_COUNT,\n" +
+            "    (SELECT COUNT(*) FROM RECIPE WHERE WRITE_NO = #{no}) AS RECIPE_COUNT\n" +
+            "FROM DUAL")
+    userCountVo count(String no);
 }

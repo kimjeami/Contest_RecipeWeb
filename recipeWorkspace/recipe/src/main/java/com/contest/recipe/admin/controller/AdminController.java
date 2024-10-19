@@ -98,6 +98,7 @@ public class AdminController {
      * @return
      */
     @GetMapping("testAdminSidebar")
+
     public String testAdminSidebar() {
         System.out.println("testAdminSidebar Function Entered");
         return "admin/testAdminhome";

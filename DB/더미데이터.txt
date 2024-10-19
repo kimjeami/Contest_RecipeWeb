@@ -1,5 +1,5 @@
-INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
-VALUES(SEQ_MEMBER_NO.NEXTVAL,'user01','1234','이용진','user01@gmail.com','000306','M','01011111111');
+INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE,profile)
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user01','1234','이용진','user01@gmail.com','000306','M','01011111111','mond.png');
 
 INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
 VALUES(SEQ_MEMBER_NO.NEXTVAL,'user02','1234','김잼민','user02@gmail.com','000213','F','01022222222');
@@ -10,6 +10,22 @@ VALUES(SEQ_MEMBER_NO.NEXTVAL,'user03','1234','쿼카민','user03@gmail.com','001
 INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
 VALUES(SEQ_MEMBER_NO.NEXTVAL,'user04','1234','지각쟁이','user04@gmail.com','000303','M','01044444444');
 
+
+
+INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user05','1234','유저5','user05@gmail.com','000303','M','01055555555');
+
+INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user06','1234','유저6','user06@gmail.com','000303','M','01066666666');
+
+INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user07','1234','유저7','user07@gmail.com','000303','M','01077777777');
+INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user08','1234','유저8','user08@gmail.com','000303','M','01088888888');
+INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user09','1234','유저9','user09@gmail.com','000303','M','01099999999');
+INSERT INTO MEMBER(NO,ID,PWD,NICK,EMAIL,BIRTH,GENDER,PHONE)
+VALUES(SEQ_MEMBER_NO.NEXTVAL,'user10','1234','유저10','user10@gmail.com','000303','M','01010101010');
 
 
 INSERT INTO ADMIN(ADMIN_NO, ADMIN_ID, ADMIN_PWD) VALUES(10,'admin10','1234');
@@ -29,53 +45,88 @@ INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(3,'컴퓨터');
 INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(4,'칵테일');
 INSERT INTO RECIPE_CATE(RECIPE_CATE_NO,RECIPE_CATE_NAME) VALUES(5,'기타');
 
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1000,1001);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1000,1002);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1000,1003);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1000,1004);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1000,1008);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1000,1009);
+
+
+
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1001,1000);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1002,1000);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1003,1000);
+
+INSERT INTO FREIND(FREIND_NO,FOLLOWER,FOLLOWING)
+VALUES(SEQ_FREIND_NO.NEXTVAL,1004,1000);
+
 
 BEGIN
-FOR i IN 1..100 LOOP
-INSERT INTO recipe
-(
-recipte_no,
-write_no,
-title,
-thumbnail,
-introduce,
-recipe_cate_no,
-serving,
-time_taken,
-step,
-tip,
-enroll_date,
-seq,
-things_name,
-ea,
-things_url,
-RECIPTE_ORDER,
-explanation,
-recipe_seq_img,
-write_name
-)
-VALUES
-(
-SEQ_REPORT_NO.NEXTVAL,
-1000,
-'제목' || i,
-'face01.png',
-'소개글' || i,
-1,
-1,
-1,
-'하',
-'소개팁' || i,
-SYSDATE,
-1,
-'재료' || i,
-'수량' || i,
-'naver.com',
-1,
-'레시피내용' || i,
-'face01.png',
-'이용진'
-);
-END LOOP;
+    FOR i IN 1..100 LOOP
+        INSERT INTO recipe 
+        (
+            recipte_no, 
+            write_no, 
+            title, 
+            thumbnail, 
+            introduce, 
+            recipe_cate_no, 
+            serving, 
+            time_taken, 
+            step, 
+            tip, 
+            enroll_date, 
+            seq, 
+            things_name, 
+            ea, 
+            things_url, 
+            RECIPTE_ORDER, 
+            explanation, 
+            recipe_seq_img, 
+            write_name
+        ) 
+        VALUES 
+        (
+            SEQ_REPORT_NO.NEXTVAL, 
+            1000, 
+            '제목' || i, 
+            'face01.png',
+            '소개글' || i, 
+            1, 
+            1, 
+            1, 
+            '하', 
+            '소개팁' || i, 
+            SYSDATE, 
+            1, 
+            '재료' || i, 
+            i, -- 수정된 부분
+            'naver.com', 
+            1, 
+            '레시피내용' || i, 
+            'face01.png', 
+            '이용진'
+        );
+    END LOOP;
 END;
 /
+
+commit;

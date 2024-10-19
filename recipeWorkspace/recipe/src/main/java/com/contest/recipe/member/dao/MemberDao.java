@@ -2,6 +2,7 @@ package com.contest.recipe.member.dao;
 
 import com.contest.recipe.member.mapper.MemberMapper;
 import com.contest.recipe.member.vo.MemberVo;
+import com.contest.recipe.member.vo.userCountVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +31,9 @@ public class MemberDao {
 
     public List<MemberVo> list() {
         return mapper.list();
+    }
+
+    public userCountVo count(String no) {
+        return mapper.count(no);
     }
 }

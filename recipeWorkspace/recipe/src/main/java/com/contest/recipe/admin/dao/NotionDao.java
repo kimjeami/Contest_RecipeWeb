@@ -21,4 +21,8 @@ public class NotionDao {
     public notionVo notionDetailData(notionVo vo) {
         return mapper.notionDetailData(vo);
     }
+
+    public int notionModify(notionVo vo) {
+        return mapper.notionModify(vo);
+    }
 }
