@@ -2,6 +2,7 @@ package com.contest.recipe.member.controller;
 
 import com.contest.recipe.member.service.MemberService;
 import com.contest.recipe.member.vo.MemberVo;
+import com.contest.recipe.member.vo.userCountVo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -35,8 +36,12 @@ public class MemberController {
         HttpSession session = request.getSession();
         MemberVo loginMemberVo = service.login(vo);
 
+
+
         if(loginMemberVo != null ){
             session.setAttribute("loginMemberVo", loginMemberVo);
+            userCountVo userCount=service.count(loginMemberVo.getNo());
+            session.setAttribute("userCountVo", userCount);
             //레시피 화면으로
             return "redirect:/recipe";
 
@@ -157,6 +162,8 @@ public class MemberController {
     public String mypage(MemberVo vo, HttpServletRequest request, Model model){
         HttpSession session = request.getSession();
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+
+
         if (loginMemberVo == null) {
             return "redirect:/member/login";
         }
