@@ -8,7 +8,7 @@ function grantBtn(){
         success : function(x){
             console.log("세션 값 가져옴~~~");        
             console.log(x);
-            location.href='/admin/home';
+            location.href='/admin/sessionHome';
             
         },
         error : function(x){

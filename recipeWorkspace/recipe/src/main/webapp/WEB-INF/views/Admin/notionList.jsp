@@ -13,6 +13,9 @@
 </head>
 <body>
     <div id="divMain">
+        <nav>
+            <h1>공지사항 리스트 조회</h1>
+        </nav>
     <table id="mainTable">
         <thead>
             <tr>

@@ -23,7 +23,7 @@ public class AdminController {
 
     private final AdminService service;
 
-    @GetMapping("home")
+    @GetMapping("sessionHome")
     public String adminHome(HttpSession session){
         AdminVo adminVo = (AdminVo)session.getAttribute("adminVo");
         List<RankVo> rankVo = (List<RankVo>) session.getAttribute("rankVo");
@@ -31,16 +31,28 @@ public class AdminController {
             throw new RuntimeException("adminVo가 null입니다");
         }
         if(rankVo != null){
-            return "home";
+            return "admin/sessionHome";
         }
         else{
-            return "home";
+            return "admin/sessionHome";
         }
     }
 
     @GetMapping("login")
     public String adminLogin(){
         return "admin/login";
+    }
+
+    @PostMapping("login")
+    public String adminLogin(AdminVo vo, HttpSession session, HttpServletRequest req){
+        AdminVo adminVo = service.adminLogin(vo);
+        if(adminVo != null){
+            session.setAttribute("adminVo",adminVo);
+            return "admin/sessionHome";
+        }
+        else{
+            return "admin/login";
+        }
     }
 
 /////위에 코드는 임시로 js로그인 확인 절차 세션으로 부여할거 고민해야됨 loginVo,List<RankVo>이 두개를 세션에 담아 전달해야 완료
@@ -52,24 +64,14 @@ public class AdminController {
         List<RankVo> rankVo = service.adminRankData(vo);
         if(rankVo != null){
             session.setAttribute("rankVo",rankVo);
-            return "home";
+            return "admin/sessionHome";
         }
         else {
             return "admin/login";
         }
     }
 
-    @PostMapping("login")
-    public String adminLogin(AdminVo vo, HttpSession session, HttpServletRequest req){
-        AdminVo adminVo = service.adminLogin(vo);
-        if(adminVo != null){
-            session.setAttribute("adminVo",adminVo);
-            return "home";
-        }
-        else{
-            return "admin/login";
-        }
-    }
+
 
     @ResponseBody
     @GetMapping("userData")
