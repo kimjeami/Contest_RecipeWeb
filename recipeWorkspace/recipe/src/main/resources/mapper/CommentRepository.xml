@@ -4,8 +4,8 @@
 
 <mapper namespace="com.contest.recipe.board.repository.CommentRepository">
     <insert id="Commentsave">
-        insert into recipte_comment (no, recipte_no,member_reply_no,answer,write_date,scope,member_name)
-        VALUES (SEQ_RECIPTE_COMMENT_NO.NEXTVAL,#{recipte_no},#{member_reply_no},#{answer},sysdate,#{scope},#{member_name})
+        insert into recipte_comment (no, recipte_no,member_reply_no,answer,write_date,member_name)
+        VALUES (SEQ_RECIPTE_COMMENT_NO.NEXTVAL,#{recipte_no},#{member_reply_no},#{answer},sysdate,#{member_name})
     </insert>
 
     <resultMap type="com.contest.recipe.board.domain.Recipte_comment" id="recipe_comment">
@@ -15,7 +15,6 @@
         <id property="answer" column="answer"/>
         <id property="write_date" column="write_date"/>
         <id property="del_yn" column="del_yn"/>
-        <id property="scope" column="scope"/>
         <id property="member_name" column="member_name"/>
     </resultMap>
 

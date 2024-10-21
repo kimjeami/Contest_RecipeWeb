@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/board/comment.css">
+<link rel="stylesheet" href="/css/board/star.css">
 <title></title>
 </head>
 <body>
@@ -14,10 +14,20 @@
                  <div class="mb-3" name="myform" id="myform" >
                     <input type="hidden" id="recipte_no" name="recipte_no" value="${recipe.recipte_no}">
                     <input type="hidden" id="member_reply_no" name="member_reply_no" value="${loginMemberVo.no}">
-                    <input type="hidden" id="member_name" name="member_name" value="${loginMemberVo.nick}">
+                    <fieldset>
+                    		<span class="text-bold">별점을 선택해주세요</span>
+                    		<input type="radio" name="reviewStar" value="5" id="rate1" checked><label
+                    			for="rate1">★</label>
+                    		<input type="radio" name="reviewStar" value="4" id="rate2"><label
+                    			for="rate2">★</label>
+                    		<input type="radio" name="reviewStar" value="3" id="rate3"><label
+                    			for="rate3">★</label>
+                    		<input type="radio" name="reviewStar" value="2" id="rate4"><label
+                    			for="rate4">★</label>
+                    		<input type="radio" name="reviewStar" value="1" id="rate5"><label
+                    			for="rate5">★</label>
+                    	</fieldset>
                     <div>
-                    <textarea class="col-auto form-control" type="text" id="input_comment"
-                    				  placeholder="댓글을 남겨주세요"></textarea>
                     <button type="button" id="btn_comment">등록</button>
                   </div>
 
@@ -29,6 +39,7 @@
                         <th>작성자</th>
                         <th>내용</th>
                         <th>작성일</th>
+                        <th>별점</th>
                     </tr>
                     </thead>
                     <tbody id="comment_list">

@@ -32,14 +32,6 @@
                                 <br/>
                                 <a href="${contextPath}/recipe/detail?recipte_no=${recipe.recipte_no}">${recipe.title}</a>
                                 <br/>
-                                <c:choose>
-                                    <c:when test="${recipe.state == 0}">
-                                        <i class="status selling"></i>
-                                    </c:when>
-                                    <c:when test="${recipe.state == 1}">
-                                        <i class="status sold-out"></i>
-                                    </c:when>
-                                </c:choose>
                           </div>
 
                     </c:forEach>

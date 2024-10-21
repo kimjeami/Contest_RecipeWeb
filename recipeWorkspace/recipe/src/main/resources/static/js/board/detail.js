@@ -11,7 +11,6 @@ $(document).ready(function() {
 
         const answer = $('#input_comment').val();
         const member_name = $('#member_name').val();
-        const scope = $('input[name="reviewStar"]:checked').val();
         const member_reply_no = $('#member_reply_no').val();
 
         if (answer.trim() === '') {
@@ -26,7 +25,6 @@ $(document).ready(function() {
                 recipte_no: recipte_no,
                 answer: answer,
                 member_name: member_name,
-                scope: scope,
                 member_reply_no: member_reply_no
             },
             success: function(response) {
@@ -75,7 +73,6 @@ function buildComment(comments) {
               <td>${recipte_comment.member_name}</td>
               <td>${recipte_comment.answer}</td>
               <td>${formattedDate}</td>
-              <td>${recipte_comment.scope}</td>
           </tr>
         `;
         commentList.append(row); // 댓글 목록에 새로운 행 추가
