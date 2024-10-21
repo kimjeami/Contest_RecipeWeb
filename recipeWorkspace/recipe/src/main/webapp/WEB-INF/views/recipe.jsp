@@ -12,7 +12,6 @@
     <jsp:include page="/WEB-INF/views/layout/util.jsp" />
 </head>
 
-
 <body>
     <div class="container">
         <jsp:include page="/WEB-INF/views/layout/nav.jsp" />

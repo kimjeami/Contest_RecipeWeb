@@ -3,7 +3,7 @@
 <nav class="nav">
     <div class="nav__upper">
         <div class="nav__logo-container">
-          <a href="#"><img src="/img/image.png" alt="logo"></a>
+          <a href="/recipe"><img src="/img/image.png" alt="logo"></a>
         </div>
         <div class="nav__right">
             <form action="/recipe/list" method="get">

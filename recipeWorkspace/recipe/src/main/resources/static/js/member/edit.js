@@ -36,6 +36,16 @@ document.getElementById("changePasswordForm").addEventListener("submit", functio
             success: function(response) {
                 if (response.success) {
                     alert('비밀번호가 변경되었습니다.');
+                    $.ajax({
+                        url: '/member/logout',
+                        type: 'GET',
+                        success: function(response) {
+                            location.reload();
+                        },
+                        error: function() {
+                            alert('로그아웃 실패.');
+                        }
+                    });
                     modal.style.display = "none";
                 } else {
                     alert('비밀번호 변경 실패: ' + response.message);

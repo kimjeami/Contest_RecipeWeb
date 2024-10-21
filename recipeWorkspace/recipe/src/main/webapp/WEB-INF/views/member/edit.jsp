@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 정보 수정</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
     <link rel="stylesheet" href="/css/member/edit.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="/js/member/edit.js"></script>
@@ -46,11 +47,11 @@
                         </div>
                         <div class="form-group">
                             <label for="addressDetail">상세주소</label>
-                            <input type="text" name="addressDetail" id="addressDetail" value="${loginMemberVo.addressDetail}">
+                            <input type="text" name="addressDetail" id="address2" value="${loginMemberVo.addressDetail}">
                         </div>
                         <div class="form-group">
                             <label for="addressExtra">참고주소</label>
-                            <input type="text" name="addressExtra" id="addressExtra" value="${loginMemberVo.addressExtra}">
+                            <input type="text" name="addressExtra" id="extraAddress" value="${loginMemberVo.addressExtra}">
                         </div>
                     </div>
 
