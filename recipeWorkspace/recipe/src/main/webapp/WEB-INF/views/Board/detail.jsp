@@ -134,6 +134,8 @@
                 </div>
                 <br/><br/>
                 <label>리뷰</label>
+                <c:import url="star.jsp"/>
+
                 <c:import url="comment.jsp"/>
 
                 </main>

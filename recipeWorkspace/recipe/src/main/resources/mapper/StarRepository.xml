@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.contest.recipe.board.repository.StarRepository">
+    <insert id="starsave">
+        insert into star (star_no, recipte_no,member_no,scope)
+        VALUES (SEQ_STAR_NO.NEXTVAL,#{recipte_no},#{member_no},#{scope})
+    </insert>
+
+
+
+
+</mapper>

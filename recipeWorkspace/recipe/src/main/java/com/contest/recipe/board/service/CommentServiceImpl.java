@@ -29,7 +29,6 @@ public class CommentServiceImpl implements CommentService{
         recipte_comment.setAnswer(request.getParameter("answer"));
         recipte_comment.setMember_name(request.getParameter("member_name"));
         recipte_comment.setMember_reply_no(Integer.parseInt(request.getParameter("member_reply_no")));
-        recipte_comment.setScope(Integer.parseInt(request.getParameter("scope")));
         commentRepository.Commentsave(recipte_comment);
 
 

@@ -37,6 +37,36 @@ $(document).ready(function() {
             }
         });
     });
+
+
+
+       $('#btn_star').click(function() {
+
+            const scope = $('input[name="reviewStar"]:checked').val();
+            const member_no = $('#member_no').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/star/write',
+                data: {
+                    recipte_no: recipte_no,
+                    scope: scope,
+                    member_no: member_no
+                },
+                success: function(response) {
+                    // 댓글 등록 후 UI 업데이트
+                    alert('별점 등록 성공');
+                    loadComment(recipte_no); // 댓글 목록 다시 불러오기
+
+                },
+                error: function(xhr, status, error) {
+                    alert('별점 등록에 실패했습니다: ' + error);
+                }
+            });
+        });
+
+
+
 });
 
 
@@ -78,6 +108,7 @@ function buildComment(comments) {
         commentList.append(row); // 댓글 목록에 새로운 행 추가
     });
 }
+
 
 
 

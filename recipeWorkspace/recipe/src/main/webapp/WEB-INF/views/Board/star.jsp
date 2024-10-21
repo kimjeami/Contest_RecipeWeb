@@ -13,7 +13,7 @@
             <div class="mb-3 mt-3">
                  <div class="mb-3" name="myform" id="myform" >
                     <input type="hidden" id="recipte_no" name="recipte_no" value="${recipe.recipte_no}">
-                    <input type="hidden" id="member_reply_no" name="member_reply_no" value="${loginMemberVo.no}">
+                    <input type="hidden" id="member_no" name="member_no" value="${loginMemberVo.no}">
                     <fieldset>
                     		<span class="text-bold">별점을 선택해주세요</span>
                     		<input type="radio" name="reviewStar" value="5" id="rate1" checked><label
@@ -27,25 +27,11 @@
                     		<input type="radio" name="reviewStar" value="1" id="rate5"><label
                     			for="rate5">★</label>
                     	</fieldset>
+                        <button type="button" id="btn_star">별점 등록</button>
                     <div>
-                    <button type="button" id="btn_comment">등록</button>
-                  </div>
 
+                    </div>
                  </div>
-
-                <table class="table table-hover" id="cmt_table">
-                    <thead>
-                    <tr>
-                        <th>작성자</th>
-                        <th>내용</th>
-                        <th>작성일</th>
-                        <th>별점</th>
-                    </tr>
-                    </thead>
-                    <tbody id="comment_list">
-                    </tbody>
-
-                </table>
             </div>
         </div>
 </body>
