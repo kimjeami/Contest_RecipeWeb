@@ -34,7 +34,7 @@
   }
 
   .main-login,
-  .main-join {
+  .main-join{
     grid-column: 3 / 7;
   }
 

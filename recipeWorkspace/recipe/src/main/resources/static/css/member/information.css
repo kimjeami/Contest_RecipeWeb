@@ -1,3 +1,11 @@
+.main-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 300px 40px 300px;
+}
+
+
 .profile {
     display: flex;
     flex-direction: column;

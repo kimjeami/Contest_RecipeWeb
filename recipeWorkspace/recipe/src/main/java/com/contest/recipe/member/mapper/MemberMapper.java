@@ -41,13 +41,15 @@ public interface MemberMapper {
             "    R.TITLE,\n" +
             "    R.THUMBNAIL,\n" +
             "    R.WRITE_NAME,\n" +
-            "    COALESCE(AVG(RC.SCOPE), 0) AS AVERAGE_SCOPE \n" +
+            "    COALESCE(AVG(S.SCOPE), 0) AS AVERAGE_SCOPE \n" +
             "FROM \n" +
             "    RECIPE R\n" +
             "FULL JOIN \n" +
             "    RECIPTE_COMMENT RC ON R.RECIPTE_NO = RC.RECIPTE_NO\n" +
+            "FULL JOIN\n" +
+            "        STAR S ON R.RECIPTE_NO = S.RECIPTE_NO\n" +
             "WHERE\n" +
-            "    R.WRITE_NO = #{no}  \n" +
+            "    R.WRITE_NO = 1000  \n" +
             "GROUP BY \n" +
             "    R.RECIPTE_NO, R.TITLE, R.THUMBNAIL, R.WRITE_NAME\n" +
             "ORDER BY \n" +

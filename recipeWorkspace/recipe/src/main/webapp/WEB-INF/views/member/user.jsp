@@ -61,7 +61,7 @@
                     <div id="followers" class="content hidden">
                        <div class="follower-list">
                            <c:forEach var="memberFollower" items="${memberFollowerList}">
-                               <div class="follower-item" onclick="location.href='/member/user?member_no=${memberFollower.no}'">
+                               <div class="follower-item" onclick="location.href='/member/opponent?member_no=${memberFollower.no}'">
                                    <img src="/img/profile/${memberFollower.profile}" alt="${memberFollower.nick}" class="follower-image">
                                    <div class="follower-info">
                                        <h4>${memberFollower.nick}</h4>
@@ -84,7 +84,7 @@
                     <div id="following" class="content hidden">
                         <div class="follower-list">
                             <c:forEach var="memberFollowing" items="${memberFollowingList}">
-                                <div class="follower-item" onclick="location.href='/member/user?member_no=${memberFollowing.no}'">
+                                <div class="follower-item" onclick="location.href='/member/opponent?no=${memberFollowing.no}'">
                                     <img src="/img/profile/${memberFollowing.profile}" alt="${memberFollowing.nick}" class="follower-image">
                                     <div class="follower-info">
                                         <h4>${memberFollowing.nick}</h4>
