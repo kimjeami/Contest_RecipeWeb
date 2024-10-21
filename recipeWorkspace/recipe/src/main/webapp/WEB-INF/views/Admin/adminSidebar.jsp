@@ -7,10 +7,14 @@
         <div id="head-sidebar-main">
             <!-- 메인 사이드바 헤더 -->
             <div id="wrap-ele-titleimg">
-                <!-- 타이틀 이미지 위치 - 나중에 추가 -->
+                <!-- 타이틀 이미지 위치 -->
+                <img src="/img/admin_logo_upper.svg" alt="logo1" class="img-logo-upper">
+                <img src="/img/admin_logo_lower.svg" alt="logo2" class="img-logo-lower">
+                <img src="/img/admin_logo_small.png" alt="smllogo" class="img-logo-small">
             </div>
             <div id="wrap-ele-loginuser">
                 <!-- 로그인유저 이름 위치 -->
+                <h3 style="color: white; text-align: center; font-weight: 150;"><span>관리자 </span>관리자001</h3>
             </div>
         </div>
         <div id="body-sidebar-main">

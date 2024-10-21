@@ -9,10 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -100,10 +98,33 @@ public class AdminController {
      * @return
      */
     @GetMapping("testAdminSidebar")
-
     public String testAdminSidebar() {
         System.out.println("testAdminSidebar Function Entered");
         return "admin/testAdminhome";
+    }
+
+    /**
+     * 어드민 홈 테스트
+     * @return
+     */
+    @GetMapping("testAdminhome")
+    public String testAdminhome(Model model) {
+        System.out.println("testAdminhome Function Entered");
+
+        service.loadAdminHome(model);
+
+        return "admin/testAdminhome";
+    }
+
+    @GetMapping("testAdminQnaList")
+    public String testAdminQnaList(
+            Model model,
+            @RequestParam(required = false) Integer cat,
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) String keyword
+            ) {
+
+        return "admin/qnaList";
     }
 
 }

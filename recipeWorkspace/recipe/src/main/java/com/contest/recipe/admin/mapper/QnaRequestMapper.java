@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Q&A 요청목록 매퍼ㅇ
  */
@@ -68,4 +71,27 @@ public interface QnaRequestMapper {
         delete문은 나중에 씀
         qna_reply를 봐줘야되서 일단 미룬드
      */
+
+    @Select("""
+            SELECT
+                QNA_REQUEST_NO,
+                CAT.QNA_CATEGORY_NAME AS QNA_CATEGORY_NAME,
+                QNA_REQUEST_TITLE,
+                MEM.ID AS ID,
+                TO_CHAR(QNA_REQUEST_CREATED_DATE, 'YY-MM-DD') AS QNA_REQUEST_CREATED_DATE,
+                TO_CHAR(QNA_REQUEST_LAST_ACTIVITY_DATE, 'YY-MM-DD') AS QNA_REQUEST_LAST_ACTIVITY_DATE
+            FROM
+                QNA_REQUEST REQ
+            INNER JOIN
+                QNA_CATEGORY CAT ON REQ.QNA_CATEGORY_NO = CAT.QNA_CATEGORY_NO
+            INNER JOIN
+                MEMBER MEM ON REQ.MEMBER_NO = MEM.NO
+            WHERE
+                    QNA_REQUEST_STATUS = 0
+                AND
+                    ROWNUM <= 10
+            ORDER BY
+                QNA_REQUEST_NO DESC
+            """)
+    List<HashMap<String, Object>> select_recentTen();
 }
