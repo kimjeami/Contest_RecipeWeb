@@ -19,4 +19,5 @@ public class RecipeDao {
     public List<RecipeVo> fetchRecentRecipesHit() {
         return mapper.selectRecentRecipesHit();
     }
+    
 }
