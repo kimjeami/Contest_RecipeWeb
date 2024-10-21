@@ -34,8 +34,9 @@
             <a href="/member/edit" class="settings__link">내 정보 수정</a>
             <a href="/member/information" class="settings__link">내 레시피 관리</a>
             <a href="#" class="settings__link">찜 목록 관리</a>
-            <a href="/recipe/inquirylist?write_no=${loginMemberVo.no}" class="settings__link">문의 내역</a>
+            <a href="/recipe/inquirylist?write_no=${loginMemberVo.no}" class="settings__link">레시피 문의 내역</a>
             <a href="/recipe/answerlist?awnser_no=${loginMemberVo.no}" class="settings__link">답변 내역</a>
+            <a href="/recipe/qna?member_no=${loginMemberVo.no}" class="settings__link">1:1 문의 내역</a>
             <a href="/member/logout" class="settings__link">로그아웃</a>
           </div>
         </main>
