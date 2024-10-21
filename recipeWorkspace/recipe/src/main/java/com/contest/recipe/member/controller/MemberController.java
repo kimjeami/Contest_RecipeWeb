@@ -58,7 +58,7 @@ public class MemberController {
     public String logout(HttpServletRequest request){
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:/recipe";
+        return "redirect:/member/login";
     }
 
     //회원가입 화면
@@ -80,9 +80,6 @@ public class MemberController {
 
         return "member/login";
     }
-
-
-
 
     //정보 수정 페이지
     @GetMapping("edit")
@@ -212,7 +209,6 @@ public class MemberController {
         return "member/information";
 
     }
-
 
     @PostMapping("follow")
     public ResponseEntity<String> follow(@RequestBody Map<String, String> payload, HttpServletRequest request) {
