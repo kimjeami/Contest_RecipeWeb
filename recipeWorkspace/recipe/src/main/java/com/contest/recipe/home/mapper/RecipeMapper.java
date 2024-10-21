@@ -1,6 +1,8 @@
 package com.contest.recipe.home.mapper;
 
 import com.contest.recipe.home.vo.RecipeVo;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -20,10 +22,10 @@ public interface RecipeMapper {
             "    FULL JOIN \n" +
             "        RECIPTE_COMMENT RC ON R.RECIPTE_NO = RC.RECIPTE_NO\n" +
             "    FULL JOIN\n" +
-            "        STAR S ON R.RECIPTE_NO = S.RECIPE_NO\n" +
+            "        STAR S ON R.RECIPTE_NO = S.RECIPTE_NO\n" +
             "    GROUP BY \n" +
             "        R.RECIPTE_NO, R.TITLE, R.THUMBNAIL, R.WRITE_NAME\n" +
-            "    ORDER BY \n" +
+            "    ORDER BY\n" +
             "        R.RECIPTE_NO DESC\n" +
             ") WHERE ROWNUM <= 10")
     List<RecipeVo> selectRecentRecipes();
@@ -40,7 +42,7 @@ public interface RecipeMapper {
             "    FULL JOIN \n" +
             "        RECIPTE_COMMENT RC ON R.RECIPTE_NO = RC.RECIPTE_NO\n" +
             "    FULL JOIN\n" +
-            "        STAR S ON R.RECIPTE_NO = S.RECIPE_NO\n" +
+            "        STAR S ON R.RECIPTE_NO = S.RECIPTE_NO\n" +
             "    GROUP BY \n" +
             "        R.RECIPTE_NO, R.TITLE, R.THUMBNAIL, R.WRITE_NAME\n" +
             "    ORDER BY\n" +
@@ -48,4 +50,18 @@ public interface RecipeMapper {
             "        R.RECIPTE_NO DESC\n" +
             ") WHERE ROWNUM <= 10")
     List<RecipeVo> selectRecentRecipesHit();
+
+    @Select("SELECT COUNT(*)\n" +
+            "FROM STAR\n" +
+            "WHERE RECIPE_NO=#{recipteNo}")
+    int favorite(String recipteNo);
+
+    @Insert("INSERT INTO FAVORITE(NO,RECIPTE_NO,MEMBER_NO)\n" +
+            "VALUES(SEQ_FAVORITE_NO.NEXTVAL,#{recipteNo},#{no})")
+    void favoriteInsert(String recipteNo, String no);
+
+    @Delete("DELETE FAVORITE\n" +
+            "WHERE RECIPTE_NO=#{recipteNo}\n" +
+            "AND MEMBER_NO=#{no}")
+    void favoriteDelete(String recipteNo, String no);
 }

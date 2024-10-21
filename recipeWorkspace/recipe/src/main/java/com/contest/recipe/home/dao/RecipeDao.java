@@ -19,5 +19,16 @@ public class RecipeDao {
     public List<RecipeVo> fetchRecentRecipesHit() {
         return mapper.selectRecentRecipesHit();
     }
-    
+
+    public int favorite(String recipteNo) {
+        return mapper.favorite(recipteNo);
+    }
+
+    public void favoriteInsert(String recipteNo, String no) {
+        mapper.favoriteInsert(recipteNo,no);
+    }
+
+    public void favoriteDelete(String recipteNo, String no) {
+        mapper.favoriteDelete(recipteNo,no);
+    }
 }
