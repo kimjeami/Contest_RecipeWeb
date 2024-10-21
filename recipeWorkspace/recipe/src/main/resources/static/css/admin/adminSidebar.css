@@ -30,6 +30,55 @@
         #head-sidebar-main {
             height: 150px;
             background-color: #000;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 로고 이미지 조절 */
+        /*
+            왜인지는 몰라도 해당 클래스가 적용이 안됨
+            일단 지금은 인라인 스타일로 넣어둠
+        */
+        #wrap-ele-titleimg {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            /* padding-top: 15px;*/
+        }
+        .img-logo-upper {
+            display: block;
+            width: 65%;
+            height: auto;
+        }
+        .img-logo-lower {
+            display: block;
+            width: 80%;
+            height: auto;
+        }
+        .img-logo-small {
+            display: none;
+            width: 80%;
+            height: auto;
+            max-width: 130px;
+        }
+        /* 메인사이드바 조절시 로고 컨트롤 */
+        #wrap-sidebar-main.adj-sidebar-main--close #wrap-ele-titleimg {
+            margin-bottom: 15px;
+        }
+        #wrap-sidebar-main.adj-sidebar-main--close #wrap-ele-titleimg>img:nth-child(1),
+        #wrap-sidebar-main.adj-sidebar-main--close #wrap-ele-titleimg>img:nth-child(2) {
+            display: none;
+        }
+        #wrap-sidebar-main.adj-sidebar-main--close #wrap-ele-titleimg>img:nth-child(3) {
+            display: block;
+        }
+        #wrap-sidebar-main.adj-sidebar-main--close #wrap-ele-loginuser>h3>span {
+            display: none;
         }
 
         /* 메인 사이드바 바디 */
