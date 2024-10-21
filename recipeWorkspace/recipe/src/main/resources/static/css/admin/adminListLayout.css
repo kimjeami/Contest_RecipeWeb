@@ -72,3 +72,68 @@
 .def-admin-list-body-searchbar-resultarea>div:first-child {
     margin-right: 20px;
 }
+
+/* 리스트 영역 */
+.def-admin-list-body-tablelike {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    height: calc(100% - 100px);
+}
+/* 리스트의 각 행 */
+.def-admin-list-body-tablerow {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 30px;
+
+    border-bottom: 1px solid rgb(242, 242, 242);
+}
+/* 행 커서 호버 효과 */
+.def-admin-list-body-tablerow:hover {
+    background-color: rgb(250, 250, 250);
+}
+/* 행 내부 컬럼 폰트 */
+.def-admin-list-body-tablerow>div {
+    padding: 0 5px 0;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* 리스트의 머리행 내부 컬럼 */
+.def-admin-list-body-tablerow-head>div {
+    color: rgb(140, 140, 140);
+}
+/* 머리행 호버 없애기 */
+.def-admin-list-body-tablerow-head:hover {
+    background-color: inherit;
+}
+
+/*
+    리스트 컬럼들의 비율은 각 리스트별로 따로 정의해야함
+*/
+
+/* 페이징 wrapper */
+.def-admin-list-body-pagination {
+    height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/* 페이징 번호, 꺽쇠 */
+.def-admin-list-body-pagination>a {
+    color: black;
+    text-decoration: none;
+    margin: 0 5px 0;
+}
+/* 페이징 번호 하이라이트 */
+.def-admin-list-body-pagination>a.def-admin-pagination-highlight {
+    text-decoration: underline;
+}
