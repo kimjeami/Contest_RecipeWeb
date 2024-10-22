@@ -3,6 +3,7 @@ package com.contest.recipe.board.controller;
 
 
 import com.contest.recipe.board.service.BoardService;
+import com.contest.recipe.board.service.StarService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+
+    @Autowired
+    private StarService starService;
 
 
     // 작성 페이지
@@ -56,6 +60,7 @@ public class BoardController {
 
         boardService.recipeList(model,category,keyword,page);
 
+//        starService.starList(model);
 
         return "Board/list";
 

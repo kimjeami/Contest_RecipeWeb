@@ -4,8 +4,13 @@ $(document).ready(function() {
 
      // 현재 글의 id
      const recipte_no = $("input[name='recipte_no']").val().trim();
-     loadComment(recipte_no);
+     const member_no = $("input[name='member_no']").val().trim();
 
+     console.log(member_no);
+
+
+     loadComment(recipte_no);
+//     loadStar(recipte_no,member_no);
 
     $('#btn_comment').click(function() {
 
@@ -40,30 +45,82 @@ $(document).ready(function() {
 
 
 
-       $('#btn_star').click(function() {
+     $('#btn_star').click(function() {
+         const scope = $('input[name="reviewStar"]:checked').val();
+         const member_no = $('#member_no').val();
 
-            const scope = $('input[name="reviewStar"]:checked').val();
-            const member_no = $('#member_no').val();
+         $.ajax({
+             type: 'GET',
+             url: '/star/getstar?recipte_no=' + recipte_no + '&member_no=' + member_no,
+             dataType: 'json',
+             success: function(data) {
+                 if (data) {  // data가 null이 아닐 경우
+                     $.ajax({
+                         type: 'POST',
+                         url: '/star/update',
+                         data: {
+                             recipte_no: recipte_no,
+                             member_no: member_no,
+                             scope: scope
+                         },
+                         success: function(response) {
+                             // 업데이트 성공 시 처리
+                             alert('별점 업데이트 성공:', response);
+                         },
+                         error: function(xhr, status, error) {
+                             alert('별점 업데이트 실패:', error);
+                         }
+                     });
+                 } else {
+                     $.ajax({
+                         type: 'POST',
+                         url: '/star/write',
+                         data: {
+                             recipte_no: recipte_no,
+                             member_no: member_no,
+                             scope: scope
+                         },
+                         success: function(response) {
+                             // 저장 성공 시 처리
+                             alert('별점 저장 성공:', response);
+                         },
+                         error: function(xhr, status, error) {
+                             alert('별점 저장 실패:', error);
+                         }
+                     });
+                 }
+             },
+             error: function(xhr, status, error) {
+                 console.error('별점 상태 확인에 실패했습니다:', error);
+                 alert('별점 상태 확인에 실패했습니다: ' + error);
+             }
+         });
+     });
 
-            $.ajax({
-                type: 'POST',
-                url: '/star/write',
-                data: {
-                    recipte_no: recipte_no,
-                    scope: scope,
-                    member_no: member_no
-                },
-                success: function(response) {
-                    // 댓글 등록 후 UI 업데이트
-                    alert('별점 등록 성공');
-                    loadComment(recipte_no); // 댓글 목록 다시 불러오기
 
-                },
-                error: function(xhr, status, error) {
-                    alert('별점 등록에 실패했습니다: ' + error);
-                }
-            });
-        });
+
+
+       // 좋아요 버튼 작동
+         $('#btn_like').click(function() {
+
+              $.ajax({
+                      url: '/recipe/favorite',
+                      type: 'POST',
+                      contentType: 'application/json',
+                      data: JSON.stringify({ recipte_no: recipte_no }),
+                      success: function(response) {
+                          if (response.success) {
+                              alert('좋아요 성공');
+                          } else {
+                              alert('좋아요 취소');
+                          }
+                      },
+                      error: function() {
+                          alert('좋아요 실패...');
+                      }
+              });
+               });
+
 
 
 
@@ -108,6 +165,36 @@ function buildComment(comments) {
         commentList.append(row); // 댓글 목록에 새로운 행 추가
     });
 }
+
+
+//// 별점 가져오기
+//function loadStar(recipte_no, member_no) {
+//    $.ajax({
+//        url: "/star/getstar?recipte_no=" + recipte_no + "&member_no=" + member_no,
+//        type: "GET",
+//        dataType: "json", // JSON 데이터 형식으로 응답받음
+//        cache: false,
+//         success: function(data, status) {
+//                   if (status == "success") {
+//                       buildStar(data); // 서버에서 받은 댓글 데이터를 화면에 출력
+//                   }
+//               },
+//        error: function(xhr, status, error) {
+//            console.log('Ajax 실패:', error); // 에러 로그 출력
+//        }
+//    });
+//}
+//
+//
+//// 별점 보여주기
+//function buildStar(star) {
+//    const starContainer = $('#star_scope');
+//    starContainer.empty(); // 기존 내용을 비움
+//
+//    // 단일 scope 값을 표시
+//    const starHtml = `<div>별점: ${star.scope}</div>`;
+//    starContainer.append(starHtml);
+//}
 
 
 

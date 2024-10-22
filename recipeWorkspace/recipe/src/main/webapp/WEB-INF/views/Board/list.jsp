@@ -8,6 +8,7 @@
         <title>목록 페이지 입니다.</title>
         <link rel="stylesheet" href="/css/board/boardlist.css">
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <jsp:include page="/WEB-INF/views/layout/util.jsp" />
     </head>
     <body>
@@ -17,7 +18,6 @@
 
                 <div class="recipe-container">
                     <c:forEach var="recipe" items="${recipe}">
-
                          <div class="recipe-item">
                                 <c:if test="${recipe.thumbnail == 'nan'}">
                                      <a href="${contextPath}/recipe/detail?recipte_no=${recipe.recipte_no}">
@@ -32,8 +32,14 @@
                                 <br/>
                                 <a href="${contextPath}/recipe/detail?recipte_no=${recipe.recipte_no}">${recipe.title}</a>
                                 <br/>
-                          </div>
+                                  <p>작성자: ${recipe.write_name}</p>
+                                  <div class="stars">
+                                     <c:forEach begin="1" end="5" var="star">
+                                         <i class="<c:if test='${star <= recipe.star.scope}'>fas fa-star</c:if><c:if test='${star > recipe.star.scope}'>far fa-star</c:if>"></i>
+                                     </c:forEach>
+                                 </div>
 
+                          </div>
                     </c:forEach>
                 </div>
                       <div>

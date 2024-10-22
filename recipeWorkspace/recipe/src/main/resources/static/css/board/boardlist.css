@@ -31,6 +31,15 @@
     margin: 0;
 }
 
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.stars i {
+    color: #f39c12;
+}
 
  .pagination-container {
               text-align:center;  /* 가운데 정렬 */

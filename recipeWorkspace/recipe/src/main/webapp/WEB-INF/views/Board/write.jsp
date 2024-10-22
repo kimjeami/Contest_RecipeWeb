@@ -102,12 +102,6 @@
                      레시피 팁
                      <textarea rows="5" placeholder="내용을 입력하세요" name="tip" id="tip"></textarea>
                      <br/><br/>
-                    <select id="state" name="state">
-                           <option value="2">무료</option>
-                           <option value="0">판매중</option>
-                    </select>
-
-
                      <div class="submit_css">
                          <button type="button" class="submit-btn" onclick="RecipeCheck()">레시피 등록</button>
                          &emsp; &emsp;&emsp; &emsp;

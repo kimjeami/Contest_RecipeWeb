@@ -2,8 +2,10 @@ package com.contest.recipe.board.service;
 
 import com.contest.recipe.board.domain.Recipe;
 import com.contest.recipe.board.domain.Recipe_inquiry;
+import com.contest.recipe.board.domain.Star;
 import com.contest.recipe.board.repository.BoardRepository;
 import com.contest.recipe.board.repository.Recipe_inquiryRepository;
+import com.contest.recipe.board.repository.StarRepository;
 import com.contest.recipe.util.U;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -29,6 +31,9 @@ public class BoardServiceImpl implements BoardService{
 
 
     private BoardRepository boardRepository;
+
+    @Autowired
+    private StarRepository starRepository;
 
     @Autowired
     private Recipe_inquiryRepository recipe_inquiryRepository;
@@ -219,7 +224,6 @@ public class BoardServiceImpl implements BoardService{
         recipe.setTime_taken(mul.getParameter("time_taken"));
         recipe.setStep(mul.getParameter("step"));
         recipe.setTip(mul.getParameter("tip"));
-        recipe.setState(Integer.parseInt(mul.getParameter("state")));
 
         // 재료 정보 처리
         String[] thingsNames = mul.getParameterValues("things_name[]");

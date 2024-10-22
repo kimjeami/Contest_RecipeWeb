@@ -28,9 +28,9 @@
                     			for="rate5">★</label>
                     	</fieldset>
                         <button type="button" id="btn_star">별점 등록</button>
-                    <div>
-
+                    <div id="star_scope">
                     </div>
+
                  </div>
             </div>
         </div>

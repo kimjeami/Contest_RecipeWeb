@@ -16,6 +16,7 @@
         <result property="title" column="title"/>
         <result property="introduce" column="introduce"/>
         <result property="tip" column="tip"/>
+        <result property="thumbnail" column="thumbnail"/>
         <result property="enroll_date" column="enroll_date"/>
         <result property="modify_date" column="modify_date"/>
         <result property="del_yn" column="del_yn"/>
@@ -31,6 +32,11 @@
         <result property="explanation" column="explanation"/>
         <result property="recipe_seq_img" column="recipe_seq_img"/>
         <result property="write_name" column="write_name"/>
+        <collection property="star" resultMap="star"/>
+    </resultMap>
+
+    <resultMap type="com.contest.recipe.board.domain.Star" id="star">
+        <result property="scope" column="scope"/>
     </resultMap>
 
 
@@ -42,18 +48,19 @@
     <select id="recipeList" resultMap="recipe">
         SELECT *
         FROM (
-        SELECT r.*, ROW_NUMBER() OVER (ORDER BY recipte_no DESC) AS rn
+        SELECT r.recipte_no, r.title, r.write_name,r.thumbnail,s.scope,
+        ROW_NUMBER() OVER (ORDER BY r.recipte_no DESC) AS rn
         FROM recipe r
-        WHERE LOWER(title) LIKE '%' || LOWER(#{keyword}) || '%'
-        <if test ="category != 0">
-            AND LOWER(recipe_cate_no) LIKE '%' || LOWER(#{category}) || '%'
+        LEFT JOIN Star s ON r.recipte_no = s.recipte_no
+        WHERE LOWER(r.title) LIKE '%' || LOWER(#{keyword}) || '%'
+        <if test="category != 0">
+            AND r.recipe_cate_no = #{category}
         </if>
         AND r.state != 3
         )
-
         WHERE rn BETWEEN #{from} + 1 AND #{from} + #{rows}
-
     </select>
+
 
 
     <select id="recipeDetail" resultMap="recipe">

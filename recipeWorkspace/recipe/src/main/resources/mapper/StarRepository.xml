@@ -8,7 +8,27 @@
         VALUES (SEQ_STAR_NO.NEXTVAL,#{recipte_no},#{member_no},#{scope})
     </insert>
 
+    <resultMap type="com.contest.recipe.board.domain.Star" id="star">
+        <id property="star_no" column="star_no"/>
+        <id property="recipte_no" column="recipte_no"/>
+        <id property="member_no" column="member_no"/>
+        <id property="scope" column="scope"/>
+    </resultMap>
 
+
+    <select id="getStar" resultMap="star">
+        SELECT * FROM star
+        where recipte_no = #{recipte_no}
+        AND member_no = #{member_no}
+    </select>
+
+    <update id="starupdate">
+        update Star
+        set scope = #{scope}
+        where recipte_no = #{recipte_no}
+        AND member_no = #{member_no}
+
+    </update>
 
 
 </mapper>
