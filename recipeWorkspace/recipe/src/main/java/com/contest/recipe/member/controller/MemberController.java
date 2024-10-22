@@ -210,6 +210,32 @@ public class MemberController {
 
     }
 
+    //내정보
+    @GetMapping("user")
+    public String user(@RequestParam("member_no") String member_no,MemberVo vo, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+
+        if (loginMemberVo == null) {
+            return "redirect:/member/login";
+        }
+
+
+
+
+        List<RecipeVo> myRecipeList = service.getMyRecipes(member_no);
+        model.addAttribute("myRecipeList", myRecipeList);
+
+        List<MemberVo> memberFollowerList=service.getFollowerList(member_no);
+        model.addAttribute("memberFollowerList",memberFollowerList);
+
+        List<MemberVo> memberFollowingList=service.getFollowingList(member_no);
+        model.addAttribute("memberFollowingList",memberFollowingList);
+
+        return "member/user";
+
+    }
+
     @PostMapping("follow")
     public ResponseEntity<String> follow(@RequestBody Map<String, String> payload, HttpServletRequest request) {
         HttpSession session = request.getSession();
