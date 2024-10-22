@@ -36,5 +36,8 @@ public class Recipe {
     private String recipe_seq_img; // 레시피 순서 이미지
     private String write_name; // 작성자 이름
 
+    private  Double average_scope;
+
+
     private Star star;
 }

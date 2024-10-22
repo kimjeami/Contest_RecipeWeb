@@ -35,7 +35,7 @@
                                   <p>작성자: ${recipe.write_name}</p>
                                   <div class="stars">
                                      <c:forEach begin="1" end="5" var="star">
-                                         <i class="<c:if test='${star <= recipe.star.scope}'>fas fa-star</c:if><c:if test='${star > recipe.star.scope}'>far fa-star</c:if>"></i>
+                                         <i class="<c:if test='${star <= recipe.average_scope}'>fas fa-star</c:if><c:if test='${star > recipe.average_scope}'>far fa-star</c:if>"></i>
                                      </c:forEach>
                                  </div>
 

@@ -32,6 +32,7 @@
         <result property="explanation" column="explanation"/>
         <result property="recipe_seq_img" column="recipe_seq_img"/>
         <result property="write_name" column="write_name"/>
+        <result property="average_scope" column="average_scope"/>
         <collection property="star" resultMap="star"/>
     </resultMap>
 
@@ -48,7 +49,7 @@
     <select id="recipeList" resultMap="recipe">
         SELECT *
         FROM (
-        SELECT r.recipte_no, r.title, r.write_name,r.thumbnail,s.scope,
+        SELECT r.recipte_no, r.title, r.write_name,r.thumbnail,COALESCE(AVG(S.SCOPE), 0) AS average_scope,
         ROW_NUMBER() OVER (ORDER BY r.recipte_no DESC) AS rn
         FROM recipe r
         LEFT JOIN Star s ON r.recipte_no = s.recipte_no
@@ -57,6 +58,7 @@
             AND r.recipe_cate_no = #{category}
         </if>
         AND r.state != 3
+        GROUP BY r.recipte_no, r.title, r.write_name, r.thumbnail
         )
         WHERE rn BETWEEN #{from} + 1 AND #{from} + #{rows}
     </select>
