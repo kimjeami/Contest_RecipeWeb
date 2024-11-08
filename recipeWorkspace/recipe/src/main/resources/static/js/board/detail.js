@@ -98,10 +98,8 @@ $(document).ready(function() {
      });
 
 
-
-
        // 좋아요 버튼 작동
-         $('#btn_like').click(function() {
+         $('#like').click(function() {
 
               $.ajax({
                       url: '/recipe/favorite',
@@ -167,34 +165,7 @@ function buildComment(comments) {
 }
 
 
-//// 별점 가져오기
-//function loadStar(recipte_no, member_no) {
-//    $.ajax({
-//        url: "/star/getstar?recipte_no=" + recipte_no + "&member_no=" + member_no,
-//        type: "GET",
-//        dataType: "json", // JSON 데이터 형식으로 응답받음
-//        cache: false,
-//         success: function(data, status) {
-//                   if (status == "success") {
-//                       buildStar(data); // 서버에서 받은 댓글 데이터를 화면에 출력
-//                   }
-//               },
-//        error: function(xhr, status, error) {
-//            console.log('Ajax 실패:', error); // 에러 로그 출력
-//        }
-//    });
-//}
-//
-//
-//// 별점 보여주기
-//function buildStar(star) {
-//    const starContainer = $('#star_scope');
-//    starContainer.empty(); // 기존 내용을 비움
-//
-//    // 단일 scope 값을 표시
-//    const starHtml = `<div>별점: ${star.scope}</div>`;
-//    starContainer.append(starHtml);
-//}
+
 
 
 

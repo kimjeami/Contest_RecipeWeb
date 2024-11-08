@@ -27,16 +27,24 @@
       <script src="/js/board/detail.js"></script>
  <link rel="stylesheet" href="/css/board/detail.css">
    <jsp:include page="/WEB-INF/views/layout/util.jsp" />
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
           <div class="container">
                 <jsp:include page="/WEB-INF/views/layout/nav.jsp" />
                 <main class="main">
+
+
+             <div name="btn_like" id="btn_like">
+
+                 <i class="fs-1 text-danger bi bi-heart" onclick="like()"></i>
+
+                 <!-- <i class="fs-1 text-danger bi bi-heart-fill" onclick="like()"></i> --!>
+             </div>
            <div class="things_url_css">
                 <h2>썸네일</h2>
                 <br/><br/>
-
               <c:if test="${recipe.thumbnail == 'nan'}">
                    <img src="/images/sample.png" width="400px" height="400px">
               </c:if>

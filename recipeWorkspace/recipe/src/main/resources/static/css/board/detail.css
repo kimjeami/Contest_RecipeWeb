@@ -89,3 +89,8 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+#btn_like {
+    text-align: right;
+    float:right;
+}
