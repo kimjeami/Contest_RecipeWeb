@@ -8,6 +8,11 @@ spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.timeout=5000
 spring.mail.properties.mail.smtp.starttls.enable=true
 
+# Redis
+spring.data.redis.host=localhost
+spring.data.redis.port=6379
+
+
 를 추가하여야함 
 본인의 email을 적은 후 앱 비밀번호를 만들어 작성할것
 25년 이후 IMAP는 항상 설정으로 바뀌어서 따로 설정 안해도 됨
@@ -16,4 +21,13 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 build.gradle
 // mail
 implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+// redis
+implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
 추가하여 업데이트 할것
+
+ redis
+https://github.com/microsoftarchive/redis/releases
+공식 사이트 zip 설치
+redis-server.exe실행하여야 가능
