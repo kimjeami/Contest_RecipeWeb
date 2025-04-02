@@ -49,7 +49,7 @@ public interface MemberMapper {
             "FULL JOIN\n" +
             "        STAR S ON R.RECIPTE_NO = S.RECIPTE_NO\n" +
             "WHERE\n" +
-            "    R.WRITE_NO = 1000  \n" +
+            "    R.WRITE_NO = #{no}  \n" +
             "GROUP BY \n" +
             "    R.RECIPTE_NO, R.TITLE, R.THUMBNAIL, R.WRITE_NAME\n" +
             "ORDER BY \n" +
