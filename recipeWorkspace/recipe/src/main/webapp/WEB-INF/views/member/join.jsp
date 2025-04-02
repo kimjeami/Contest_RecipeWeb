@@ -9,6 +9,7 @@
       <!-- 다음 주소 api -->
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
       <script defer src="/js/member/join.js"></script>
+      <script defer src="/js/mail/mail.js"></script>
 
       <link rel="stylesheet" href="/css/member/join.css">
       <jsp:include page="/WEB-INF/views/layout/util.jsp" />
@@ -36,6 +37,13 @@
 
                 <div class="form-group">
                     <input type="email" name="email" id="email" placeholder="이메일" required>
+                    <button type="button" id="sendMailBtn">인증번호 발송</button>
+                    <div id="verifySection" style="display: none;">
+                        <label for="verifyCode">인증번호 입력: </label>
+                        <input type="text" id="verifyCode">
+                        <button id="checkCodeBtn">인증 확인</button>
+                    </div>
+                    <p id="resultMessage"></p>
                 </div>
 
                 <div class="form-group">
